@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+  }
+
+  body {
+    @apply bg-cosmic-900 text-ivory font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-ivory;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-cosmic-950;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #D4AF37, #8a6c23);
+    border-radius: 9999px;
+    border: 2px solid #080d1a;
+  }
+}
+
+@layer components {
+  .container-luxe {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Glassmorphism surface */
+  .glass {
+    @apply border border-ivory/20 bg-ivory/[0.05] backdrop-blur-xl;
+    box-shadow: 0 8px 32px 0 rgba(45, 21, 0, 0.10), inset 0 1px 0 0 rgba(212, 175, 55, 0.10);
+  }
+
+  .glass-gold {
+    @apply border border-gold/30 bg-ivory/[0.05] backdrop-blur-xl;
+    box-shadow: 0 8px 32px 0 rgba(45, 21, 0, 0.12), inset 0 1px 0 0 rgba(244, 217, 139, 0.20);
+  }
+
+  /* Gold gradient text */
+  .text-gold-gradient {
+    @apply bg-gold-shine bg-clip-text text-transparent;
+    background-size: 200% auto;
+  }
+
+  .text-gold-gradient-animate {
+    @apply bg-gold-shine bg-clip-text text-transparent animate-shimmer;
+    background-size: 200% auto;
+  }
+
+  /* Hairline gold divider */
+  .gold-rule {
+    @apply h-px w-full;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.6), transparent);
+  }
+
+  .section-pad {
+    @apply py-20 sm:py-24 lg:py-32;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  /* Mandala / glow helpers */
+  .drop-glow {
+    filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.35));
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+}
