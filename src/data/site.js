@@ -37,6 +37,7 @@ export const mailLink = (email = site.emails[0]) => `mailto:${email}`;
 
 export const navLinks = [
   { label: 'Home', href: '#home' },
+  { label: 'Kundali', href: '#kundali' },
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
   { label: 'Poojas', href: '#poojas' },

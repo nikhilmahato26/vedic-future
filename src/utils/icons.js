@@ -57,6 +57,10 @@ export {
   Hand,
   Infinity,
   Stars,
+  Printer,
+  Download,
+  RotateCcw,
+  FileText,
 } from 'lucide-react';
 
 // react-icons (subset — specific imports only)
