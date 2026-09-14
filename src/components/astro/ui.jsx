@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Loader2, AlertTriangle, Lock, Wand2, FaWhatsapp, Languages } from '../../utils/icons';
 import { whatsappLink } from '../../data/site';
@@ -121,6 +121,17 @@ export function Loading({ label = 'Consulting the ephemeris…', className = '' 
       {label}
     </div>
   );
+}
+
+/** Ticking mm:ss since a start timestamp — used by long-running async jobs (PDF generation). */
+export function ElapsedTime({ since, className = '' }) {
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const s = Math.floor((now - since) / 1000);
+  return <p className={`tabular-nums ${className}`}>{Math.floor(s / 60)}:{String(s % 60).padStart(2, '0')} elapsed</p>;
 }
 
 export function ErrorNote({ error, onRetry }) {

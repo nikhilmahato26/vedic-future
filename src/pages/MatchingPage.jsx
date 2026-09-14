@@ -5,10 +5,12 @@ import { BirthFields, birthIsComplete, emptyBirth } from '../components/astro/Bi
 import useAstro from '../hooks/useAstro';
 import { astro, birthFromSearch, birthParams, birthToSearch, formatDate } from '../lib/astro';
 import { useAstroLang } from '../context/AstroLang';
+import usePdfReport from '../hooks/usePdfReport';
+import { ReportStatusPanel } from '../components/astro/kundali/PremiumTabs';
 import {
   Async, Badge, Bar, ConsultCTA, ErrorNote, LangToggle, List, Loading, Panel, PanelTitle, Prose, ScoreRing, Stat,
 } from '../components/astro/ui';
-import { HeartHandshake, Heart, ShieldCheck, AlertTriangle, RotateCcw, Sparkles, Wand2, Loader2, Users } from '../utils/icons';
+import { HeartHandshake, Heart, ShieldCheck, AlertTriangle, RotateCcw, Sparkles, Wand2, Loader2, Users, FileText } from '../utils/icons';
 
 const verdictTone = (pct) => (pct >= 70 ? 'good' : pct >= 50 ? 'coral' : 'bad');
 
@@ -220,6 +222,8 @@ function MatchResult({ boy, girl, system, onReset }) {
 
       <AiCompatibility params={params} />
 
+      <CompatibilityPdf boy={boy} girl={girl} boyName={boyName} girlName={girlName} />
+
       <ConsultCTA
         title="Planning a marriage? Get a detailed matching consultation"
         text="Guna score is only the start. Our Acharya checks Navamsa, dasha timing and dosha cancellations before advising."
@@ -261,6 +265,37 @@ function AiCompatibility({ params }) {
       {state?.loading && <Loading label="Writing the compatibility reading…" />}
       {state?.error && <ErrorNote error={state.error} onRetry={run} />}
       {state?.data && (text ? <Prose>{text}</Prose> : <List items={Object.values(state.data).filter((v) => typeof v === 'string')} />)}
+    </Panel>
+  );
+}
+
+/* PDF compatibility report -------------------------------------------- */
+
+function CompatibilityPdf({ boy, girl, boyName, girlName }) {
+  const { lang } = useAstroLang();
+  const pdf = usePdfReport();
+
+  const generate = () => pdf.generate({
+    ...birthParams(boy),
+    report_type: 'compatibility',
+    birth2: JSON.stringify(birthParams(girl)),
+    name: `${boyName} & ${girlName}`,
+    ...(lang !== 'en' && { lang }),
+  });
+
+  return (
+    <Panel coral>
+      <PanelTitle icon={FileText} title="Download the compatibility PDF report" subtitle="A complete, printable Kundli Milan report for both charts" />
+      <div className="mx-auto max-w-md">
+        <ReportStatusPanel
+          pdf={pdf}
+          subjectLabel="Kundli Milan Report"
+          subjectNote={`for ${boyName} & ${girlName}`}
+          filename={`${boyName} & ${girlName} - Kundli Milan Report.pdf`.replace(/[^\w\s.-]/g, '')}
+          onGenerate={generate}
+          onReset={pdf.reset}
+        />
+      </div>
     </Panel>
   );
 }

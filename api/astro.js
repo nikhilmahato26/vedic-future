@@ -68,9 +68,11 @@ const ALLOWED_PARAMS = new Set([
   'report_type', 'birth2', 'job_id',
 ]);
 
-// Cheap report types only — a public button must not be able to spend 5 credits a click.
+// Every report type the API offers. complete_life and deep_forecast cost 5 credits each,
+// so they lean on the per-IP throttle below rather than being blocked outright.
 const PUBLIC_REPORT_TYPES = new Set([
-  'snapshot', 'full_analysis', 'career', 'marriage', 'health', 'finance', 'annual_forecast', 'compatibility',
+  'snapshot', 'full_analysis', 'complete_life', 'career', 'marriage', 'health', 'finance',
+  'annual_forecast', 'deep_forecast', 'compatibility',
 ]);
 
 // Best-effort abuse brake for the endpoints that cost real money. It is per warm

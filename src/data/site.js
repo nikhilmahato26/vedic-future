@@ -14,8 +14,8 @@ export const site = {
     state: 'Delhi, India',
     full: '51 East Laxmi Market, Gali No. 2, Delhi - 110092, India',
   },
-  phones: ['+91 99906 16610'],
-  emails: ['vedicfuture@gmail.com'],
+  phones: ['+91 72890 91591'],
+  emails: ['vedicfuture86@gmail.com'],
   youtubeHandle: '@VedicFuture',
   youtubeUrl: '#',
   serviceLanguages: ['Hindi', 'English'],
@@ -23,8 +23,8 @@ export const site = {
 };
 
 // Primary phone digits (no spaces) for tel: and wa.me links
-export const primaryPhoneDigits = '919990616610';
-export const secondaryPhoneDigits = '919990616610';
+export const primaryPhoneDigits = '917289091591';
+export const secondaryPhoneDigits = '917289091591';
 
 export const telLink = (digits = primaryPhoneDigits) => `tel:+${digits}`;
 
