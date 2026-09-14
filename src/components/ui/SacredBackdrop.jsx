@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Mandala from './Mandala';
 
 /**
- * Atmospheric background: cosmic gradient, twinkling starfield, soft gold
+ * Atmospheric background: cosmic gradient, twinkling starfield, soft coral
  * glows and slowly drifting sacred symbols. Sits behind section content.
  * `variant` lets sections opt into lighter/heavier treatments.
  */
@@ -38,11 +38,11 @@ export default function SacredBackdrop({ variant = 'default', stars = 40 }) {
   return (
     <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
       {/* base gradient */}
-      <div className="absolute inset-0 bg-cosmic-radial" />
+      <div className="absolute inset-0 bg-cream-radial" />
 
-      {/* gold glows */}
-      <div className="absolute -left-32 top-10 h-80 w-80 rounded-full bg-gold/10 blur-[120px]" />
-      <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-gold/[0.07] blur-[110px]" />
+      {/* coral glows */}
+      <div className="absolute -left-32 top-10 h-80 w-80 rounded-full bg-coral/[0.08] blur-[120px]" />
+      <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-coral/[0.06] blur-[110px]" />
 
       {/* rotating mandalas */}
       {variant !== 'minimal' && (
@@ -62,7 +62,7 @@ export default function SacredBackdrop({ variant = 'default', stars = 40 }) {
       {starField.map((s, i) => (
         <span
           key={i}
-          className="absolute rounded-full bg-gold animate-twinkle"
+          className="absolute rounded-full bg-navy-900/25 animate-twinkle"
           style={{
             top: `${s.top}%`,
             left: `${s.left}%`,
@@ -79,7 +79,7 @@ export default function SacredBackdrop({ variant = 'default', stars = 40 }) {
         floats.map((f, i) => (
           <motion.span
             key={i}
-            className="absolute select-none font-display text-gold/15"
+            className="absolute select-none font-display text-navy-900/[0.06]"
             style={{ top: `${f.top}%`, left: `${f.left}%`, fontSize: `${f.size}rem` }}
             animate={{ y: [0, -24, 0], rotate: [0, 8, 0] }}
             transition={{

@@ -134,3 +134,51 @@ Spiritual Healing.*
 ---
 
 Built for **Vedic Future**, 51 East Laxmi Market, Gali No. 2, Delhi 92 (+91 99906 16610).
+
+## Online Astrology Services (VedIntel AstroAPI)
+
+All astrology calculations come from [VedIntel AstroAPI](https://vedintelastroapi.com/docs) (Swiss Ephemeris).
+
+| Page | Route | What it does |
+| --- | --- | --- |
+| Astrology hub | `/astrology` | Directory of every service |
+| Janam Kundali | `/kundali` | 13-tab report: charts (D1–D60), planets, dashas, doshas, gems & rudraksha, yogas, Ashtakvarga/Shadbala, predictions, numerology, KP/Jaimini/Western/Chinese/Nine Star Ki, AI reading, PDF report |
+| Kundli Milan | `/kundli-milan` | North (36 guna) / South matching, Mangal Dosha, Rajju-Vedha, Papasamaya, AI narrative |
+| Panchang | `/panchang` | Daily panchang, Choghadiya & Hora, monthly calendar, auspicious days, festivals/Ekadashi/Purnima/Amavasya, transits |
+| Rashifal | `/horoscope` | Daily / weekly / monthly by sign |
+| Shubh Muhurat | `/muhurat` | Scans 7–30 days for marriage, griha pravesh, business, vehicle, travel |
+| Astro Tools | `/astro-tools` | Prashna (yes/no), baby names, gemstone guide, Moolank, Nakshatra Vastu |
+
+Every tool supports English and Hindi (`lang=hi`).
+
+### How the API key is protected
+
+The API authenticates with an `api_key` **query parameter**, so it must never reach the browser.
+The browser calls `/api/astro/<endpoint>`; [`api/astro.js`](api/astro.js) (a Vercel serverless function)
+adds the key server-side. The proxy also:
+
+- allows only an explicit list of endpoints and parameters (callers can't override `api_key`);
+- blocks the 5-credit PDF report types and throttles PDF/AI requests per IP;
+- sets CDN caching (birth charts 1 year, daily data 6 hours, yearly calendars 30 days) so repeat views cost no API calls.
+
+### Setup
+
+```bash
+cp .env.example .env.local      # then put your key in VEDINTEL_API_KEY
+npm install
+npm run dev                     # the proxy runs inside the Vite dev server
+```
+
+### Deploy (Vercel)
+
+1. Import the repo in Vercel (framework preset: Vite).
+2. Settings → Environment Variables → add `VEDINTEL_API_KEY` for Production (and Preview).
+3. Deploy. `vercel.json` handles the `/api/astro/*` rewrite and SPA routing.
+
+### Enabling optional features
+
+- **AI readings** (Kundali → AI Reading, Kundli Milan → AI narrative): connect an AI provider at
+  https://vedintelastroapi.com/dashboard/ai-providers. Until then the site shows a friendly "consult on WhatsApp" note.
+- **PDF reports** spend VedIntel report credits (1–2 per report). Top up credits in the VedIntel dashboard.
+- **KP significators / ruling planets, Jaimini Karakamsa, Combustion** need the Starter plan; add them to the
+  allowlist in `api/astro.js` after upgrading.

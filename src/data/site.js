@@ -35,17 +35,16 @@ export const whatsappLink = (
 
 export const mailLink = (email = site.emails[0]) => `mailto:${email}`;
 
+// `to` values starting with "/#" scroll to a section on the home page.
 export const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Kundali', href: '#kundali' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Poojas', href: '#poojas' },
-  { label: 'Yantras', href: '#yantras' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Awards', href: '#awards' },
-  { label: 'Testimonials', href: '#testimonials' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/#home' },
+  { label: 'About', href: '/#about' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Poojas', href: '/#poojas' },
+  { label: 'Yantras', href: '/#yantras' },
+  { label: 'Gallery', href: '/#gallery' },
+  { label: 'Testimonials', href: '/#testimonials' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 export const socials = [

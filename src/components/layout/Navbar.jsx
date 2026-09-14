@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Menu, Phone, FaWhatsapp } from '../../utils/icons';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Menu, Phone, FaWhatsapp, ChevronDown, Sparkles } from '../../utils/icons';
+import { astroNavLinks } from '../../data/astroServices';
 import { navLinks, site, telLink, whatsappLink, primaryPhoneDigits } from '../../data/site';
 import Button from '../ui/Button';
 import MobileMenu from './MobileMenu';
@@ -9,6 +11,20 @@ import logoImg from '../../assets/images/logo.png';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [astroOpen, setAstroOpen] = useState(false);
+  const closeTimer = useRef(null);
+  const { pathname } = useLocation();
+  const onAstroPage = astroNavLinks.some((l) => l.to === pathname);
+
+  useEffect(() => setAstroOpen(false), [pathname]);
+
+  const openAstro = () => {
+    clearTimeout(closeTimer.current);
+    setAstroOpen(true);
+  };
+  const closeAstro = () => {
+    closeTimer.current = setTimeout(() => setAstroOpen(false), 150);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -25,41 +41,74 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${
           scrolled
-            ? 'border-b border-white/10 bg-cosmic-900/80 py-3 backdrop-blur-xl shadow-glass'
+            ? 'border-b border-navy-900/8 bg-cream-100/90 py-3 backdrop-blur-xl shadow-glass'
             : 'border-b border-transparent py-5'
         }`}
       >
         <div className="container-luxe flex items-center justify-between">
           {/* Brand */}
-          <a href="#home" className="group flex items-center gap-3">
-            <span className="relative flex h-14 w-14 items-center justify-center rounded-full border border-gold/30 bg-cosmic-950/70 p-2 transition-all duration-500 group-hover:border-gold/60">
+          <Link to="/" className="group flex items-center gap-3">
+            <span className="relative flex h-14 w-14 items-center justify-center rounded-full border border-coral/30 bg-navy-950/70 p-2 transition-all duration-500 group-hover:border-coral/60">
               <img src={logoImg} alt={`${site.name} logo`} className="h-full w-full object-contain" />
               <span className="absolute inset-0 rounded-full animate-spin-slower" />
             </span>
             <span className="leading-tight">
-              <span className="block font-sanskrit text-[10px] uppercase tracking-[0.28em] text-gold/80">
-                {site.brandLine}
-              </span>
-              <span className="block font-display text-xl sm:text-2xl font-bold tracking-tight text-ivory">
+              <span className="block font-display text-xl sm:text-2xl font-bold tracking-tight text-navy-900">
                 {site.name}
               </span>
-              <span className="block font-sanskrit text-[11px] tracking-widest text-gold font-medium">
+              <span className="block font-sanskrit text-[11px] tracking-widest text-coral font-medium">
                 Astrology &amp; Vastu
               </span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-7 lg:flex">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="group relative text-sm font-medium text-ivory/75 transition-colors duration-300 hover:text-gold"
+          <nav className="hidden items-center gap-6 lg:flex xl:gap-7">
+            {navLinks.slice(0, 1).map((link) => (
+              <NavItem key={link.href} link={link} />
+            ))}
+
+            <div className="relative" onMouseEnter={openAstro} onMouseLeave={closeAstro}>
+              <button
+                type="button"
+                aria-expanded={astroOpen}
+                aria-haspopup="true"
+                onClick={() => setAstroOpen((o) => !o)}
+                className={`flex items-center gap-1 text-sm font-medium transition-colors duration-300 hover:text-coral ${onAstroPage ? 'text-coral' : 'text-navy-900/75'}`}
               >
-                {link.label}
-                <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
-              </a>
+                Astrology
+                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${astroOpen ? 'rotate-180' : ''}`} />
+              </button>
+              <AnimatePresence>
+                {astroOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.18 }}
+                    className="absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 pt-4"
+                  >
+                    <div className="overflow-hidden rounded-2xl border border-navy-900/10 bg-white p-2 shadow-glass backdrop-blur-xl">
+                      {astroNavLinks.map((link, i) => (
+                        <Link
+                          key={link.to}
+                          to={link.to}
+                          className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm transition ${
+                            pathname === link.to ? 'bg-coral/15 text-coral' : 'text-navy-900/80 hover:bg-navy-900/5 hover:text-coral'
+                          } ${i === 0 ? 'mb-1 border-b border-coral/15 font-medium' : ''}`}
+                        >
+                          {i === 0 && <Sparkles className="h-3.5 w-3.5 text-coral" />}
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {navLinks.slice(1).map((link) => (
+              <NavItem key={link.href} link={link} />
             ))}
           </nav>
 
@@ -78,7 +127,7 @@ export default function Navbar() {
               href={whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
-              variant="gold"
+              variant="coral"
               size="sm"
               icon={FaWhatsapp}
               iconRight={false}
@@ -91,7 +140,7 @@ export default function Navbar() {
           <button
             onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-ivory transition hover:border-gold/50 hover:text-gold lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-navy-900 transition hover:border-coral/50 hover:text-coral lg:hidden"
           >
             <Menu className="h-5 w-5" />
           </button>
@@ -100,5 +149,17 @@ export default function Navbar() {
 
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
+  );
+}
+
+function NavItem({ link }) {
+  return (
+    <Link
+      to={link.href}
+      className="group relative text-sm font-medium text-navy-900/75 transition-colors duration-300 hover:text-coral"
+    >
+      {link.label}
+      <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-coral transition-all duration-300 group-hover:w-full" />
+    </Link>
   );
 }

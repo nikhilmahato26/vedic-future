@@ -1,0 +1,113 @@
+// Online astrology services powered by the VedIntel AstroAPI.
+// `icon` references a named export in utils/icons.js.
+
+export const astroServices = [
+  {
+    to: '/kundali',
+    title: 'Janam Kundali',
+    hindi: 'जन्म कुंडली',
+    icon: 'Stars',
+    desc: 'Lagna & Navamsa charts, 16 divisional charts, planets, dashas, yogas, Ashtakvarga and a downloadable PDF report.',
+    badge: 'Most popular',
+  },
+  {
+    to: '/kundli-milan',
+    title: 'Kundli Milan',
+    hindi: 'कुंडली मिलान',
+    icon: 'HeartHandshake',
+    desc: '36-guna Ashta Koota matching with Mangal Dosha, Rajju-Vedha and Papasamaya checks for marriage.',
+  },
+  {
+    to: '/vastu',
+    title: 'Vastu Shastra',
+    hindi: 'वास्तु शास्त्र',
+    icon: 'Compass',
+    desc: 'Your personal Vastu direction from your birth Nakshatra, plus the full zone-by-zone home & office guide.',
+  },
+  {
+    to: '/kundali?tab=dosha',
+    title: 'Dosha Check',
+    hindi: 'दोष विश्लेषण',
+    icon: 'Flame',
+    desc: 'Manglik, Kaal Sarp, Pitra Dosha and Shani Sade Sati — with cancellations and remedies.',
+    needsBirth: true,
+  },
+  {
+    to: '/panchang',
+    title: 'Daily Panchang',
+    hindi: 'दैनिक पंचांग',
+    icon: 'Sun',
+    desc: 'Tithi, Nakshatra, Rahu Kaal, Abhijit Muhurat, Choghadiya, Hora and the monthly Hindu calendar.',
+  },
+  {
+    to: '/horoscope',
+    title: 'Rashifal',
+    hindi: 'राशिफल',
+    icon: 'Moon',
+    desc: 'Daily, weekly and monthly horoscope for all 12 rashis in English and Hindi.',
+  },
+  {
+    to: '/muhurat',
+    title: 'Shubh Muhurat',
+    hindi: 'शुभ मुहूर्त',
+    icon: 'CalendarCheck',
+    desc: 'Find auspicious dates for marriage, griha pravesh, business, vehicle purchase and travel.',
+  },
+  {
+    to: '/kundali?tab=remedies',
+    title: 'Gemstone & Rudraksha',
+    hindi: 'रत्न व रुद्राक्ष',
+    icon: 'Gem',
+    desc: 'Personal Ratna and Rudraksha recommendations from your Lagna lord and running dasha.',
+    needsBirth: true,
+  },
+  {
+    to: '/kundali?tab=numerology',
+    title: 'Numerology',
+    hindi: 'अंक ज्योतिष',
+    icon: 'Hash',
+    desc: 'Moolank, Bhagyank, life path and name numbers with lucky colours, days and numbers.',
+    needsBirth: true,
+  },
+  {
+    to: '/panchang?tab=festivals',
+    title: 'Festivals & Vrat',
+    hindi: 'त्योहार व व्रत',
+    icon: 'Sparkles',
+    desc: 'Hindu festivals, Ekadashi, Purnima and Amavasya dates for the whole year.',
+  },
+  {
+    to: '/astro-tools?tool=prasna',
+    title: 'Prashna (Ask a Question)',
+    hindi: 'प्रश्न ज्योतिष',
+    icon: 'HelpCircle',
+    desc: 'Get a yes/no answer on career, money, love, health, travel, property or legal matters.',
+  },
+  {
+    to: '/astro-tools?tool=baby-names',
+    title: 'Baby Names',
+    hindi: 'नामकरण',
+    icon: 'Baby',
+    desc: 'Auspicious names by birth nakshatra syllable for boys and girls.',
+  },
+  {
+    to: '/kundali?tab=ai',
+    title: 'AI Kundali Reading',
+    hindi: 'AI कुंडली फल',
+    icon: 'Wand2',
+    desc: 'A flowing, human-style narrative of your chart, dasha period and current transits.',
+    needsBirth: true,
+  },
+];
+
+/** Links shown in the navbar "Astrology" menu. */
+export const astroNavLinks = [
+  { label: 'All Astrology Services', to: '/astrology' },
+  { label: 'Janam Kundali', to: '/kundali' },
+  { label: 'Kundli Milan', to: '/kundli-milan' },
+  { label: 'Panchang', to: '/panchang' },
+  { label: 'Rashifal', to: '/horoscope' },
+  { label: 'Shubh Muhurat', to: '/muhurat' },
+  { label: 'Vastu Shastra', to: '/vastu' },
+  { label: 'Astro Tools', to: '/astro-tools' },
+];

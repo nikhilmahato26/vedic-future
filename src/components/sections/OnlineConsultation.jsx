@@ -45,26 +45,26 @@ export default function OnlineConsultation() {
           }
           subtitle={
             activeView === 'kundali'
-              ? 'Calculate your authentic North Indian Lagna chart, planetary positions, Nakshatra, and Manglik Dosha instantly with time-tested Vedic mathematics.'
+              ? 'Your complete birth chart with Swiss Ephemeris precision — Lagna & Navamsa charts, dashas, doshas, yogas, remedies and a PDF report.'
               : 'Distance is no barrier to divine guidance. Choose the mode that suits you and receive the same depth of care as an in-person sitting.'
           }
         />
 
         {/* View Switcher Toggle */}
         <div className="mt-8 flex justify-center">
-          <div className="inline-flex rounded-full border border-gold/30 bg-cosmic-950/80 p-1.5 backdrop-blur-md shadow-glow">
+          <div className="inline-flex rounded-full border border-coral/30 bg-navy-950/80 p-1.5 backdrop-blur-md shadow-glow">
             <button
               type="button"
               onClick={() => setActiveView('kundali')}
               className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs sm:text-sm font-medium transition-all duration-300 ${
                 activeView === 'kundali'
-                  ? 'bg-gold-gradient text-cosmic-950 shadow-md font-semibold'
-                  : 'text-ivory/70 hover:text-gold'
+                  ? 'bg-coral-gradient text-navy-950 shadow-md font-semibold'
+                  : 'text-cream-100/75 hover:text-coral'
               }`}
             >
               <Sparkles className="h-4 w-4" />
               <span>Free Janam Kundali</span>
-              <span className="hidden sm:inline-block rounded-full bg-cosmic-950/15 px-2 py-0.5 text-[10px] font-bold text-cosmic-950 ml-1">
+              <span className="hidden sm:inline-block rounded-full bg-navy-950/15 px-2 py-0.5 text-[10px] font-bold text-navy-950 ml-1">
                 Instant
               </span>
             </button>
@@ -74,8 +74,8 @@ export default function OnlineConsultation() {
               onClick={() => setActiveView('packages')}
               className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs sm:text-sm font-medium transition-all duration-300 ${
                 activeView === 'packages'
-                  ? 'bg-gold-gradient text-cosmic-950 shadow-md font-semibold'
-                  : 'text-ivory/70 hover:text-gold'
+                  ? 'bg-coral-gradient text-navy-950 shadow-md font-semibold'
+                  : 'text-cream-100/75 hover:text-coral'
               }`}
             >
               <CalendarDays className="h-4 w-4" />
@@ -116,9 +116,9 @@ export default function OnlineConsultation() {
                 <motion.div
                   key={m.label}
                   variants={fadeUp}
-                  className="flex items-center gap-2.5 rounded-full border border-gold/25 bg-white/[0.04] px-5 py-3 text-sm text-ivory/80 transition hover:border-gold/50 hover:text-gold"
+                  className="flex items-center gap-2.5 rounded-full border border-coral/25 bg-white/[0.04] px-5 py-3 text-sm text-navy-900/80 transition hover:border-coral/50 hover:text-coral"
                 >
-                  <Icon name={m.icon} className="h-4 w-4 text-gold" />
+                  <Icon name={m.icon} className="h-4 w-4 text-coral" />
                   {m.label}
                 </motion.div>
               ))}
@@ -145,17 +145,17 @@ export default function OnlineConsultation() {
               initial="hidden"
               whileInView="show"
               viewport={viewport}
-              className="mt-12 rounded-2xl border border-gold/30 bg-gold/[0.05] p-6 sm:p-8 backdrop-blur-md"
+              className="mt-12 rounded-2xl border border-coral/30 bg-coral/[0.05] p-6 sm:p-8 backdrop-blur-md"
             >
               <div className="flex flex-col items-center justify-between gap-5 text-center sm:flex-row sm:text-left">
                 <div>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-gold">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-coral">
                     <Sparkles className="h-3.5 w-3.5" /> First Step in Vedic Guidance
                   </span>
-                  <h4 className="mt-1 font-display text-xl font-semibold text-ivory sm:text-2xl">
+                  <h4 className="mt-1 font-display text-xl font-semibold text-navy-900 sm:text-2xl">
                     Don't have your Janam Kundali chart yet?
                   </h4>
-                  <p className="mt-1.5 max-w-xl text-xs sm:text-sm text-ivory/65">
+                  <p className="mt-1.5 max-w-xl text-xs sm:text-sm text-navy-900/65">
                     Generate your authentic North Indian Lagna chart, planetary degrees, and Manglik Dosha analysis for free right now.
                   </p>
                 </div>
@@ -163,7 +163,7 @@ export default function OnlineConsultation() {
                 <button
                   type="button"
                   onClick={() => setActiveView('kundali')}
-                  className="inline-flex items-center gap-2 rounded-full border border-gold bg-gold-gradient px-6 py-3 text-sm font-semibold text-cosmic-950 transition hover:shadow-glow shrink-0"
+                  className="inline-flex items-center gap-2 rounded-full border border-coral bg-coral-gradient px-6 py-3 text-sm font-semibold text-navy-950 transition hover:shadow-glow shrink-0"
                 >
                   Generate Free Kundali
                   <ArrowRight className="h-4 w-4" />
@@ -171,7 +171,7 @@ export default function OnlineConsultation() {
               </div>
             </motion.div>
 
-            <p className="mt-8 text-center text-xs text-ivory/45">
+            <p className="mt-8 text-center text-xs text-navy-900/45">
               Consultations are tailored to each seeker — share your details and we'll guide
               you to the right offering.
             </p>

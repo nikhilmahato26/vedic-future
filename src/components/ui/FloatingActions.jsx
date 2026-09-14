@@ -22,7 +22,7 @@ export default function FloatingActions() {
             exit={{ opacity: 0, scale: 0.6 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             aria-label="Back to top"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/30 bg-cosmic-900/90 text-gold backdrop-blur-md transition hover:border-gold/60 hover:shadow-glow"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-coral/30 bg-navy-900/90 text-coral backdrop-blur-md transition hover:border-coral/60 hover:shadow-glow"
           >
             <ChevronDown className="h-5 w-5 rotate-180" />
           </motion.button>

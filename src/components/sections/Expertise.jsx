@@ -26,13 +26,13 @@ export default function Expertise() {
               key={e.title}
               variants={fadeUp}
               whileHover={{ y: -6 }}
-              className="group relative flex flex-col items-center gap-4 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center transition-colors duration-500 hover:border-gold/40"
+              className="group relative flex flex-col items-center gap-4 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center transition-colors duration-500 hover:border-coral/40"
             >
-              <span className="pointer-events-none absolute inset-x-0 -top-16 mx-auto h-32 w-32 rounded-full bg-gold/0 blur-2xl transition-all duration-500 group-hover:bg-gold/15" />
-              <span className="relative flex h-14 w-14 items-center justify-center rounded-full border border-gold/25 bg-gold/[0.06] text-gold transition-all duration-500 group-hover:scale-110 group-hover:bg-gold/15">
+              <span className="pointer-events-none absolute inset-x-0 -top-16 mx-auto h-32 w-32 rounded-full bg-coral/0 blur-2xl transition-all duration-500 group-hover:bg-coral/15" />
+              <span className="relative flex h-14 w-14 items-center justify-center rounded-full border border-coral/25 bg-coral/[0.06] text-coral transition-all duration-500 group-hover:scale-110 group-hover:bg-coral/15">
                 <Icon name={e.icon} className="h-6 w-6" />
               </span>
-              <p className="relative font-display text-base font-medium text-ivory">
+              <p className="relative font-display text-base font-medium text-navy-900">
                 {e.title}
               </p>
             </motion.div>

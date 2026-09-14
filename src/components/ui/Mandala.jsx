@@ -12,7 +12,7 @@ export default function Mandala({ className = '', strokeOpacity = 0.5 }) {
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g stroke="#D4AF37" strokeOpacity={strokeOpacity}>
+      <g stroke="#E67A5B" strokeOpacity={strokeOpacity}>
         <circle cx="100" cy="100" r="96" strokeWidth="0.6" />
         <circle cx="100" cy="100" r="78" strokeWidth="0.4" />
         <circle cx="100" cy="100" r="48" strokeWidth="0.6" />
@@ -30,7 +30,7 @@ export default function Mandala({ className = '', strokeOpacity = 0.5 }) {
           );
         })}
       </g>
-      <circle cx="100" cy="100" r="5" fill="#D4AF37" fillOpacity={strokeOpacity + 0.2} />
+      <circle cx="100" cy="100" r="5" fill="#E67A5B" fillOpacity={strokeOpacity + 0.2} />
     </svg>
   );
 }

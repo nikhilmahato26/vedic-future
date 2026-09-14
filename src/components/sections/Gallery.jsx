@@ -81,7 +81,7 @@ function VideoCard({ src, label }) {
       initial={{ opacity: 0, y: 32 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative overflow-hidden rounded-2xl border border-gold/25 bg-cosmic-950/70 shadow-glow"
+      className="group relative overflow-hidden rounded-2xl border border-coral/25 bg-navy-950/70 shadow-glow"
     >
       <video
         ref={videoRef}
@@ -96,13 +96,13 @@ function VideoCard({ src, label }) {
         onPause={() => setPlaying(false)}
         onVolumeChange={(e) => setMuted(e.currentTarget.muted)}
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-cosmic-950/60 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent" />
       <div className="absolute bottom-3 right-3 z-10 flex gap-2">
         <button
           type="button"
           onClick={togglePlay}
           aria-label={playing ? 'Pause' : 'Play'}
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-cosmic-950/80 text-ivory backdrop-blur-md transition hover:border-gold/60 hover:text-gold"
+          className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-navy-950/80 text-white backdrop-blur-md transition hover:border-coral/60 hover:text-coral"
         >
           {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
         </button>
@@ -110,7 +110,7 @@ function VideoCard({ src, label }) {
           type="button"
           onClick={toggleMute}
           aria-label={muted ? 'Unmute' : 'Mute'}
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-cosmic-950/80 text-ivory backdrop-blur-md transition hover:border-gold/60 hover:text-gold"
+          className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-navy-950/80 text-white backdrop-blur-md transition hover:border-coral/60 hover:text-coral"
         >
           {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
         </button>
@@ -130,7 +130,7 @@ function ImageCard({ src, label }) {
       initial={{ opacity: 0, y: 32 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="overflow-hidden rounded-2xl border border-gold/25 bg-cosmic-950/70 shadow-glow"
+      className="overflow-hidden rounded-2xl border border-coral/25 bg-navy-950/70 shadow-glow"
     >
       <img
         src={src}
@@ -152,8 +152,8 @@ export default function Gallery() {
   return (
     <section id="gallery" className="relative overflow-hidden py-24 lg:py-32">
       <SacredBackdrop variant="alt" stars={30} />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-32 bg-cosmic-veil" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-32 bg-cosmic-veil" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-32 bg-cream-veil" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-32 bg-cream-veil" />
 
       <div className="container-luxe relative z-10">
         {/* Section heading */}
@@ -164,17 +164,14 @@ export default function Gallery() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="mb-14 text-center"
         >
-          <p className="mb-3 font-sanskrit text-xs uppercase tracking-[0.35em] text-gold/70">
-            {site.brandLine}
-          </p>
-          <h2 className="font-display text-4xl font-semibold text-ivory sm:text-5xl">
+          <h2 className="font-display text-4xl font-semibold text-navy-900 sm:text-5xl">
             {site.name}
           </h2>
-          <p className="mt-2 font-sanskrit text-lg tracking-widest text-gold-gradient-animate">
+          <p className="mt-2 font-sanskrit text-lg tracking-widest text-coral-gradient-animate">
             Sacred Space &amp; Consultations
           </p>
-          <div className="mx-auto mt-5 h-px w-24 bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
-          <p className="mx-auto mt-6 max-w-xl text-base text-ivory/60">
+          <div className="mx-auto mt-5 h-px w-24 bg-gradient-to-r from-transparent via-coral/60 to-transparent" />
+          <p className="mx-auto mt-6 max-w-xl text-base text-navy-900/60">
             A glimpse into our sacred space and divine consultations
           </p>
         </motion.div>

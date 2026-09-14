@@ -19,7 +19,7 @@ export default function Awards() {
 
         <div className="relative mx-auto mt-16 max-w-3xl">
           {/* vertical line */}
-          <span className="absolute left-5 top-2 h-full w-px bg-gradient-to-b from-gold/60 via-gold/30 to-transparent sm:left-1/2" />
+          <span className="absolute left-5 top-2 h-full w-px bg-gradient-to-b from-coral/60 via-coral/30 to-transparent sm:left-1/2" />
 
           <div className="flex flex-col gap-10">
             {awards.map((a, i) => {
@@ -37,18 +37,18 @@ export default function Awards() {
                 >
                   {/* node */}
                   <span
-                    className={`absolute left-5 top-1.5 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full border border-gold/40 bg-cosmic-900 text-gold shadow-glow sm:left-auto ${
+                    className={`absolute left-5 top-1.5 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full border border-coral/40 bg-navy-900 text-coral shadow-glow sm:left-auto ${
                       left ? 'sm:-right-5 sm:left-auto' : 'sm:-left-5'
                     }`}
                   >
                     <Icon name="Award" className="h-5 w-5" />
                   </span>
 
-                  <div className="glass-gold rounded-2xl p-6">
-                    <h3 className="font-display text-lg font-semibold text-ivory">
+                  <div className="glass-coral rounded-2xl p-6">
+                    <h3 className="font-display text-lg font-semibold text-navy-900">
                       {a.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-ivory/60">
+                    <p className="mt-2 text-sm leading-relaxed text-navy-900/60">
                       {a.detail}
                     </p>
                   </div>

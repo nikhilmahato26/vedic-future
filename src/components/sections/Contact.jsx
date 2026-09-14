@@ -26,7 +26,7 @@ const modes = [
 ];
 
 const fieldBase =
-  'w-full rounded-xl border border-ivory/30 bg-ivory/[0.07] px-4 py-3 text-ivory placeholder:text-ivory/40 outline-none transition focus:border-gold/60 focus:bg-ivory/[0.12] focus:ring-1 focus:ring-gold/30';
+  'w-full rounded-xl border border-navy-900/30 bg-navy-900/[0.07] px-4 py-3 text-navy-900 placeholder:text-navy-900/40 outline-none transition focus:border-coral/60 focus:bg-navy-900/[0.12] focus:ring-1 focus:ring-coral/30';
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -70,17 +70,17 @@ export default function Contact() {
             <GlassCard glow={false} className="p-7 sm:p-9">
               {sent ? (
                 <div className="flex flex-col items-center justify-center gap-4 py-14 text-center">
-                  <CheckCircle2 className="h-14 w-14 text-gold" />
-                  <h3 className="font-display text-2xl font-semibold text-ivory">
+                  <CheckCircle2 className="h-14 w-14 text-coral" />
+                  <h3 className="font-display text-2xl font-semibold text-navy-900">
                     Thank You 🙏
                   </h3>
-                  <p className="max-w-sm text-sm text-ivory/60">
+                  <p className="max-w-sm text-sm text-navy-900/60">
                     Your details have opened in WhatsApp — just press send and we'll
                     confirm your consultation shortly.
                   </p>
                   <button
                     onClick={() => setSent(false)}
-                    className="mt-2 text-sm text-gold underline-offset-4 hover:underline"
+                    className="mt-2 text-sm text-coral underline-offset-4 hover:underline"
                   >
                     Send another enquiry
                   </button>
@@ -88,7 +88,7 @@ export default function Contact() {
               ) : (
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
-                    <label className="mb-1.5 block text-sm text-ivory/70">Name *</label>
+                    <label className="mb-1.5 block text-sm text-navy-900/70">Name *</label>
                     <input
                       type="text"
                       placeholder="Your full name"
@@ -101,7 +101,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="mb-1.5 block text-sm text-ivory/70">Phone *</label>
+                    <label className="mb-1.5 block text-sm text-navy-900/70">Phone *</label>
                     <input
                       type="tel"
                       placeholder="+91 ..."
@@ -117,14 +117,14 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="mb-1.5 block text-sm text-ivory/70">
+                    <label className="mb-1.5 block text-sm text-navy-900/70">
                       Date of Birth
                     </label>
                     <input type="date" className={`${fieldBase} [color-scheme:light]`} {...register('dob')} />
                   </div>
 
                   <div>
-                    <label className="mb-1.5 block text-sm text-ivory/70">
+                    <label className="mb-1.5 block text-sm text-navy-900/70">
                       Service Required *
                     </label>
                     <select
@@ -132,18 +132,18 @@ export default function Contact() {
                       defaultValue=""
                       {...register('service', { required: 'Please select a service' })}
                     >
-                      <option value="" disabled className="bg-cosmic-900">
+                      <option value="" disabled className="bg-white">
                         Select a service
                       </option>
                       {services.map((s) => (
-                        <option key={s.title} value={s.title} className="bg-cosmic-900">
+                        <option key={s.title} value={s.title} className="bg-white">
                           {s.title}
                         </option>
                       ))}
-                      <option value="Poojas & Homas" className="bg-cosmic-900">
+                      <option value="Poojas & Homas" className="bg-white">
                         Poojas & Homas
                       </option>
-                      <option value="Energized Yantras" className="bg-cosmic-900">
+                      <option value="Energized Yantras" className="bg-white">
                         Energized Yantras
                       </option>
                     </select>
@@ -153,7 +153,7 @@ export default function Contact() {
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="mb-1.5 block text-sm text-ivory/70">
+                    <label className="mb-1.5 block text-sm text-navy-900/70">
                       Preferred Consultation Mode *
                     </label>
                     <select
@@ -161,11 +161,11 @@ export default function Contact() {
                       defaultValue=""
                       {...register('mode', { required: 'Please choose a mode' })}
                     >
-                      <option value="" disabled className="bg-cosmic-900">
+                      <option value="" disabled className="bg-white">
                         Select a mode
                       </option>
                       {modes.map((m) => (
-                        <option key={m} value={m} className="bg-cosmic-900">
+                        <option key={m} value={m} className="bg-white">
                           {m}
                         </option>
                       ))}
@@ -176,7 +176,7 @@ export default function Contact() {
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="mb-1.5 block text-sm text-ivory/70">Message</label>
+                    <label className="mb-1.5 block text-sm text-navy-900/70">Message</label>
                     <textarea
                       rows={4}
                       placeholder="Tell us briefly what guidance you're seeking..."
@@ -189,7 +189,7 @@ export default function Contact() {
                     <Button
                       type="button"
                       onClick={handleSubmit(onSubmit)}
-                      variant="gold"
+                      variant="coral"
                       size="lg"
                       icon={FaWhatsapp}
                       iconRight={false}
@@ -197,7 +197,7 @@ export default function Contact() {
                     >
                       Book Consultation
                     </Button>
-                    <p className="mt-3 text-center text-xs text-ivory/40">
+                    <p className="mt-3 text-center text-xs text-navy-900/40">
                       Submitting opens WhatsApp with your details pre-filled.
                     </p>
                   </div>
@@ -214,18 +214,18 @@ export default function Contact() {
             viewport={viewport}
             className="flex flex-col gap-5 lg:col-span-2"
           >
-            <GlassCard gold glow={false} className="p-7">
-              <h3 className="font-display text-xl font-semibold text-ivory">
+            <GlassCard coral glow={false} className="p-7">
+              <h3 className="font-display text-xl font-semibold text-navy-900">
                 Reach Us Directly
               </h3>
-              <span className="mt-3 block h-px w-12 bg-gold/50" />
+              <span className="mt-3 block h-px w-12 bg-coral/50" />
 
               <ul className="mt-6 space-y-5 text-sm">
                 <li className="flex items-start gap-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-gold/[0.08] text-gold">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-coral/30 bg-coral/[0.08] text-coral">
                     <Icon name="MapPin" className="h-5 w-5" />
                   </span>
-                  <span className="text-ivory/70">
+                  <span className="text-navy-900/70">
                     {site.location.name}
                     <br />
                     {site.location.address}
@@ -234,24 +234,24 @@ export default function Contact() {
                   </span>
                 </li>
                 <li className="flex items-start gap-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-gold/[0.08] text-gold">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-coral/30 bg-coral/[0.08] text-coral">
                     <Icon name="Phone" className="h-5 w-5" />
                   </span>
-                  <span className="flex flex-col text-ivory/70">
+                  <span className="flex flex-col text-navy-900/70">
                     {site.phones.map((p) => (
-                      <a key={p} href={telLink(primaryPhoneDigits)} className="transition hover:text-gold">
+                      <a key={p} href={telLink(primaryPhoneDigits)} className="transition hover:text-coral">
                         {p}
                       </a>
                     ))}
                   </span>
                 </li>
                 <li className="flex items-start gap-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-gold/[0.08] text-gold">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-coral/30 bg-coral/[0.08] text-coral">
                     <Icon name="Mail" className="h-5 w-5" />
                   </span>
-                  <span className="flex flex-col text-ivory/70">
+                  <span className="flex flex-col text-navy-900/70">
                     {site.emails.map((e) => (
-                      <a key={e} href={mailLink(e)} className="transition hover:text-gold">
+                      <a key={e} href={mailLink(e)} className="transition hover:text-coral">
                         {e}
                       </a>
                     ))}
@@ -264,15 +264,15 @@ export default function Contact() {
               href={whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between gap-4 rounded-2xl border border-gold/30 bg-gold/[0.06] p-6 transition-all duration-500 hover:bg-gold/[0.12] hover:shadow-glow"
+              className="group flex items-center justify-between gap-4 rounded-2xl border border-coral/30 bg-coral/[0.06] p-6 transition-all duration-500 hover:bg-coral/[0.12] hover:shadow-glow"
             >
               <div>
-                <p className="font-display text-lg font-semibold text-ivory">
+                <p className="font-display text-lg font-semibold text-navy-900">
                   Chat on WhatsApp
                 </p>
-                <p className="text-sm text-ivory/60">Fastest way to reach us</p>
+                <p className="text-sm text-navy-900/60">Fastest way to reach us</p>
               </div>
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold-gradient text-cosmic-950 transition-transform duration-500 group-hover:scale-110">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-coral-gradient text-navy-950 transition-transform duration-500 group-hover:scale-110">
                 <FaWhatsapp className="h-6 w-6" />
               </span>
             </a>

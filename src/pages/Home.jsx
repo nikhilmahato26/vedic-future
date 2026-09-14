@@ -1,6 +1,7 @@
 import Hero from '../components/sections/Hero';
 import AboutGuru from '../components/sections/AboutGuru';
 import Services from '../components/sections/Services';
+import AstroServices from '../components/sections/AstroServices';
 import PoojaSection from '../components/sections/PoojaSection';
 import YantraSection from '../components/sections/YantraSection';
 import Expertise from '../components/sections/Expertise';
@@ -18,6 +19,7 @@ export default function Home() {
     <>
       <Hero />
       <AboutGuru />
+      <AstroServices limit={6} />
       <Services />
       <PoojaSection />
       <YantraSection />

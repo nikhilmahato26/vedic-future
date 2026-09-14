@@ -6,7 +6,7 @@ function Item({ q, a, isOpen, onToggle }) {
   return (
     <div
       className={`overflow-hidden rounded-2xl border transition-colors duration-300 ${
-        isOpen ? 'border-gold/40 bg-white/[0.05]' : 'border-white/10 bg-white/[0.02]'
+        isOpen ? 'border-coral/40 bg-white/[0.05]' : 'border-white/10 bg-white/[0.02]'
       }`}
     >
       <button
@@ -14,12 +14,12 @@ function Item({ q, a, isOpen, onToggle }) {
         aria-expanded={isOpen}
         className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
       >
-        <span className="font-display text-lg font-medium text-ivory">{q}</span>
+        <span className="font-display text-lg font-medium text-navy-900">{q}</span>
         <span
           className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
             isOpen
-              ? 'rotate-180 border-gold/50 bg-gold/15 text-gold'
-              : 'border-white/15 text-ivory/60'
+              ? 'rotate-180 border-coral/50 bg-coral/15 text-coral'
+              : 'border-white/15 text-navy-900/60'
           }`}
         >
           <Icon name="ChevronDown" className="h-4 w-4" />
@@ -34,7 +34,7 @@ function Item({ q, a, isOpen, onToggle }) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="px-6 pb-6 text-sm leading-relaxed text-ivory/65">{a}</p>
+            <p className="px-6 pb-6 text-sm leading-relaxed text-navy-900/65">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>

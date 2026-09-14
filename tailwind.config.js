@@ -4,37 +4,43 @@ export default {
   theme: {
     extend: {
       colors: {
-        cosmic: {
-          DEFAULT: '#0F172A',
-          50: '#f0f3f9',
-          100: '#dae0ee',
-          200: '#b3c0dd',
-          300: '#8094c2',
-          400: '#4d63a0',
-          500: '#2e3f6e',
-          600: '#1e2a4d',
-          700: '#16203b',
-          800: '#101830',
-          900: '#0F172A',
-          950: '#080d1a',
+        // Deep navy-blue - dark panels (footer, CTA band), headings, body text.
+        navy: {
+          DEFAULT: '#242B54',
+          50: '#EEF0F8',
+          100: '#D6DAEC',
+          200: '#AEB5D8',
+          300: '#7F89BE',
+          400: '#565F9C',
+          500: '#3B4278',
+          600: '#2F3665',
+          700: '#282E59',
+          800: '#252B52',
+          900: '#242B54',
+          950: '#171B38',
         },
-        gold: {
-          DEFAULT: '#D4AF37',
-          50: '#fbf8ed',
-          100: '#f6efcf',
-          200: '#eeda9b',
-          300: '#e6c862',
-          400: '#dfb748',
-          500: '#D4AF37',
-          600: '#b08e29',
-          700: '#8a6c23',
-          800: '#735823',
-          900: '#624a22',
-          950: '#392910',
+        // Warm cream - the site's base background.
+        cream: {
+          DEFAULT: '#F7EEDD',
+          50: '#FEFCF8',
+          100: '#FBF5E9',
+          200: '#F7EEDD',
+          300: '#F0E3C9',
+          400: '#E7D3A9',
         },
-        ivory: {
-          DEFAULT: '#F8F4EC',
-          dark: '#ECE4D4',
+        // Coral/salmon - the single accent color (replaces the old gold).
+        coral: {
+          DEFAULT: '#E67A5B',
+          50: '#FDF1EC',
+          100: '#FBE0D5',
+          200: '#F5C0AC',
+          300: '#EEA07F',
+          400: '#EA8A64',
+          500: '#E67A5B',
+          600: '#D2603F',
+          700: '#AD4B30',
+          800: '#883B27',
+          900: '#5F2A1D',
         },
       },
       fontFamily: {
@@ -44,16 +50,18 @@ export default {
         sanskrit: ['"Marcellus"', 'serif'],
       },
       backgroundImage: {
-        'gold-gradient': 'linear-gradient(135deg, #F4D98B 0%, #D4AF37 45%, #A67C13 100%)',
-        'gold-shine': 'linear-gradient(110deg, #A67C13 0%, #D4AF37 25%, #F8E8C0 50%, #D4AF37 75%, #A67C13 100%)',
-        'cosmic-radial': 'radial-gradient(ellipse at top, #1e2a4d 0%, #0F172A 55%, #080d1a 100%)',
-        'cosmic-veil': 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.85) 70%, #0F172A 100%)',
+        'coral-gradient': 'linear-gradient(135deg, #EA8A64 0%, #E67A5B 45%, #C4502F 100%)',
+        'coral-shine': 'linear-gradient(110deg, #AD4B30 0%, #E67A5B 25%, #F5C0AC 50%, #E67A5B 75%, #AD4B30 100%)',
+        'navy-radial': 'radial-gradient(ellipse at top, #2F3665 0%, #242B54 55%, #171B38 100%)',
+        'navy-veil': 'linear-gradient(180deg, rgba(23,27,56,0) 0%, rgba(23,27,56,0.85) 70%, #171B38 100%)',
+        'cream-radial': 'radial-gradient(ellipse at top, #FBF5E9 0%, #F7EEDD 55%, #F0E3C9 100%)',
+        'cream-veil': 'linear-gradient(180deg, rgba(247,238,221,0) 0%, rgba(247,238,221,0.9) 70%, #F7EEDD 100%)',
       },
       boxShadow: {
-        glow: '0 0 40px -8px rgba(212,175,55,0.45)',
-        'glow-lg': '0 0 80px -10px rgba(212,175,55,0.4)',
-        'glass': '0 8px 32px 0 rgba(8,13,26,0.45)',
-        'gold-inset': 'inset 0 1px 0 0 rgba(244,217,139,0.35)',
+        glow: '0 10px 40px -12px rgba(230,122,91,0.35)',
+        'glow-lg': '0 20px 70px -15px rgba(230,122,91,0.32)',
+        glass: '0 8px 32px 0 rgba(36,43,84,0.10)',
+        'coral-inset': 'inset 0 1px 0 0 rgba(255,255,255,0.4)',
       },
       backdropBlur: {
         xs: '2px',
@@ -76,7 +84,7 @@ export default {
         },
         twinkle: {
           '0%, 100%': { opacity: '0.15' },
-          '50%': { opacity: '0.9' },
+          '50%': { opacity: '0.7' },
         },
       },
       animation: {

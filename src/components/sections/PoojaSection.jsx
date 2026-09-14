@@ -29,21 +29,21 @@ export default function PoojaSection() {
           className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           {poojas.map((p) => (
-            <GlassCard key={p.name} variants={fadeUp} gold className="group p-7">
+            <GlassCard key={p.name} variants={fadeUp} coral className="group p-7">
               <div className="flex items-start gap-4">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gold/30 bg-gold/[0.08] text-gold transition-all duration-500 group-hover:shadow-glow">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-coral/30 bg-coral/[0.08] text-coral transition-all duration-500 group-hover:shadow-glow">
                   <Icon name={p.icon} className="h-6 w-6" />
                 </span>
                 <div>
-                  <h3 className="font-display text-xl font-semibold text-ivory">
+                  <h3 className="font-display text-xl font-semibold text-navy-900">
                     {p.name}
                   </h3>
-                  <p className="text-xs uppercase tracking-widest text-gold/70">
+                  <p className="text-xs uppercase tracking-widest text-coral/70">
                     {p.deity}
                   </p>
                 </div>
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-ivory/60">{p.benefit}</p>
+              <p className="mt-4 text-sm leading-relaxed text-navy-900/60">{p.benefit}</p>
             </GlassCard>
           ))}
 
@@ -53,15 +53,15 @@ export default function PoojaSection() {
               href={whatsappLink('Namaste, I would like to know about more Poojas & Homas you offer.')}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-full min-h-[180px] flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-gold/30 bg-white/[0.02] p-7 text-center transition-all duration-500 hover:border-gold/60 hover:bg-white/[0.04]"
+              className="flex h-full min-h-[180px] flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-coral/30 bg-white/[0.02] p-7 text-center transition-all duration-500 hover:border-coral/60 hover:bg-white/[0.04]"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/30 text-gold">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-coral/30 text-coral">
                 <Icon name="Sparkles" className="h-6 w-6" />
               </span>
-              <p className="font-display text-lg font-semibold text-ivory">
+              <p className="font-display text-lg font-semibold text-navy-900">
                 {poojaNote}
               </p>
-              <p className="text-xs text-ivory/50">Tap to enquire about a specific ritual</p>
+              <p className="text-xs text-navy-900/50">Tap to enquire about a specific ritual</p>
             </a>
           </motion.div>
         </motion.div>
@@ -77,7 +77,7 @@ export default function PoojaSection() {
             href={whatsappLink('Namaste, I would like to arrange a pooja / homam.')}
             target="_blank"
             rel="noopener noreferrer"
-            variant="gold"
+            variant="coral"
             icon={FaWhatsapp}
             iconRight={false}
           >

@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 
 /**
  * Premium button. Renders as <a> when `href` is provided, else <button>.
- * Variants: gold (primary), glass, ghost, outline.
+ * Variants: coral (primary), glass, ghost, outline.
  */
 const base =
-  'group relative inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium tracking-wide transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-cosmic-900 disabled:opacity-60';
+  'group relative inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium tracking-wide transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-coral/60 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-100 disabled:opacity-60';
 
 const sizes = {
   sm: 'px-5 py-2.5 text-sm',
@@ -14,19 +14,19 @@ const sizes = {
 };
 
 const variants = {
-  gold:
-    'bg-gold-gradient text-cosmic-950 shadow-glow hover:shadow-glow-lg hover:brightness-110',
+  coral:
+    'bg-coral-gradient text-navy-950 shadow-glow hover:shadow-glow-lg hover:brightness-105',
   glass:
-    'glass-gold text-ivory hover:bg-white/[0.08] hover:border-gold/50',
+    'glass-coral text-navy-900 hover:bg-white hover:border-coral/60',
   outline:
-    'border border-gold/50 text-gold hover:bg-gold/10 hover:border-gold',
-  ghost: 'text-ivory/80 hover:text-gold',
+    'border border-coral/50 text-coral hover:bg-coral/10 hover:border-coral',
+  ghost: 'text-navy-900/80 hover:text-coral',
 };
 
 export default function Button({
   children,
   href,
-  variant = 'gold',
+  variant = 'coral',
   size = 'md',
   className = '',
   icon: IconCmp,

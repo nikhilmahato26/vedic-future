@@ -17,12 +17,12 @@
   }
 
   body {
-    @apply bg-cosmic-900 text-ivory font-sans antialiased;
+    @apply bg-cream-100 text-navy-900 font-sans antialiased;
     overflow-x: hidden;
   }
 
   ::selection {
-    @apply bg-gold/30 text-ivory;
+    @apply bg-coral/25 text-navy-900;
   }
 
   /* Custom scrollbar */
@@ -30,12 +30,12 @@
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-cosmic-950;
+    @apply bg-cream-200;
   }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #D4AF37, #8a6c23);
+    background: linear-gradient(180deg, #E67A5B, #AD4B30);
     border-radius: 9999px;
-    border: 2px solid #080d1a;
+    border: 2px solid #FBF5E9;
   }
 }
 
@@ -44,32 +44,39 @@
     @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
   }
 
-  /* Glassmorphism surface */
+  /* Frosted light card surface - soft white glass over cream. */
   .glass {
-    @apply border border-ivory/20 bg-ivory/[0.05] backdrop-blur-xl;
-    box-shadow: 0 8px 32px 0 rgba(45, 21, 0, 0.10), inset 0 1px 0 0 rgba(212, 175, 55, 0.10);
+    @apply border border-navy-900/10 bg-white/70 backdrop-blur-xl;
+    box-shadow: 0 8px 32px 0 rgba(36, 43, 84, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
   }
 
-  .glass-gold {
-    @apply border border-gold/30 bg-ivory/[0.05] backdrop-blur-xl;
-    box-shadow: 0 8px 32px 0 rgba(45, 21, 0, 0.12), inset 0 1px 0 0 rgba(244, 217, 139, 0.20);
+  /* Coral-bordered variant - used for highlighted/featured cards. */
+  .glass-coral {
+    @apply border border-coral/35 bg-white/80 backdrop-blur-xl;
+    box-shadow: 0 8px 32px 0 rgba(36, 43, 84, 0.10), inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
   }
 
-  /* Gold gradient text */
-  .text-gold-gradient {
-    @apply bg-gold-shine bg-clip-text text-transparent;
+  /* Solid dark-navy surface - footer, CTA band, and other deliberate dark blocks. */
+  .glass-dark {
+    @apply border border-cream-100/15 bg-navy-950/60 backdrop-blur-xl;
+    box-shadow: 0 8px 32px 0 rgba(10, 12, 26, 0.35), inset 0 1px 0 0 rgba(247, 238, 221, 0.08);
+  }
+
+  /* Coral gradient text */
+  .text-coral-gradient {
+    @apply bg-coral-shine bg-clip-text text-transparent;
     background-size: 200% auto;
   }
 
-  .text-gold-gradient-animate {
-    @apply bg-gold-shine bg-clip-text text-transparent animate-shimmer;
+  .text-coral-gradient-animate {
+    @apply bg-coral-shine bg-clip-text text-transparent animate-shimmer;
     background-size: 200% auto;
   }
 
-  /* Hairline gold divider */
-  .gold-rule {
+  /* Hairline coral divider */
+  .coral-rule {
     @apply h-px w-full;
-    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.6), transparent);
+    background: linear-gradient(90deg, transparent, rgba(230, 122, 91, 0.55), transparent);
   }
 
   .section-pad {
@@ -84,9 +91,15 @@
   .text-pretty {
     text-wrap: pretty;
   }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
   /* Mandala / glow helpers */
   .drop-glow {
-    filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.35));
+    filter: drop-shadow(0 0 14px rgba(230, 122, 91, 0.3));
   }
   .mask-fade-b {
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);

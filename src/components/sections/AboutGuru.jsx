@@ -21,11 +21,11 @@ function Stat({ value, suffix, label }) {
   const { ref, value: v } = useCountUp(value);
   return (
     <div ref={ref} className="text-center">
-      <p className="font-display text-3xl font-semibold text-gold-gradient sm:text-4xl">
+      <p className="font-display text-3xl font-semibold text-coral-gradient sm:text-4xl">
         {v.toLocaleString('en-IN')}
         {suffix}
       </p>
-      <p className="mt-1 text-xs uppercase tracking-widest text-ivory/55">{label}</p>
+      <p className="mt-1 text-xs uppercase tracking-widest text-navy-900/55">{label}</p>
     </div>
   );
 }
@@ -50,26 +50,26 @@ export default function AboutGuru() {
             className="relative mx-auto w-full max-w-md"
           >
             <Mandala className="pointer-events-none absolute -inset-6 -z-10 animate-spin-slower opacity-20" />
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-gold/30 bg-gradient-to-b from-cosmic-700 to-cosmic-950 shadow-glow-lg">
-              <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-gold/20 via-cosmic-800/50 to-transparent" />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-coral/30 bg-gradient-to-b from-navy-700 to-navy-950 shadow-glow-lg">
+              <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-coral/20 via-navy-800/50 to-transparent" />
               <img
                 src={vedicAcharyaImg}
                 alt={`${site.name} Acharya`}
                 className="relative z-10 h-full w-full object-cover object-center"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-cosmic-950/70 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent" />
             </div>
 
             {/* Floating credential badge */}
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-              className="glass-gold absolute -bottom-6 -right-4 flex items-center gap-3 rounded-2xl px-5 py-4 sm:-right-8 z-20"
+              className="glass-coral absolute -bottom-6 -right-4 flex items-center gap-3 rounded-2xl px-5 py-4 sm:-right-8 z-20"
             >
-              <Icon name="Award" className="h-8 w-8 text-gold" />
+              <Icon name="Award" className="h-8 w-8 text-coral" />
               <div className="leading-tight">
-                <p className="font-display text-lg font-semibold text-ivory">Doctorate</p>
-                <p className="text-xs text-ivory/60">in Vedic Jyotish</p>
+                <p className="font-display text-lg font-semibold text-navy-900">Doctorate</p>
+                <p className="text-xs text-navy-900/60">in Vedic Jyotish</p>
               </div>
             </motion.div>
           </motion.div>
@@ -83,17 +83,17 @@ export default function AboutGuru() {
           >
             <motion.h3
               variants={fadeUp}
-              className="font-display text-3xl font-semibold text-ivory sm:text-4xl"
+              className="font-display text-3xl font-semibold text-navy-900 sm:text-4xl"
             >
               Vedic Future Acharya
             </motion.h3>
-            <motion.p variants={fadeUp} className="mt-2 text-gold/90">
+            <motion.p variants={fadeUp} className="mt-2 text-coral/90">
               Senior Vedic Astrologer &amp; Vastu Expert · 25+ Years Experience · Delhi &amp; Global Consultations
             </motion.p>
 
             <motion.p
               variants={fadeUp}
-              className="mt-6 text-base leading-relaxed text-ivory/70"
+              className="mt-6 text-base leading-relaxed text-navy-900/70"
             >
               For over two and a half decades, our revered Acharya at Vedic Future has illuminated
               the paths of thousands of seekers through the timeless sciences of Jyotisha. Blending
@@ -102,14 +102,14 @@ export default function AboutGuru() {
             </motion.p>
 
             <motion.div variants={fadeUp} className="mt-7">
-              <p className="text-sm font-semibold uppercase tracking-widest text-gold/80">
+              <p className="text-sm font-semibold uppercase tracking-widest text-coral/80">
                 Expert In
               </p>
               <div className="mt-3 flex flex-wrap gap-2.5">
                 {expertiseTags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-gold/25 bg-white/[0.04] px-4 py-1.5 text-sm text-ivory/80"
+                    className="rounded-full border border-coral/25 bg-white/[0.04] px-4 py-1.5 text-sm text-navy-900/80"
                   >
                     {tag}
                   </span>
@@ -118,16 +118,16 @@ export default function AboutGuru() {
             </motion.div>
 
             <motion.div variants={fadeUp} className="mt-7">
-              <p className="text-sm font-semibold uppercase tracking-widest text-gold/80">
+              <p className="text-sm font-semibold uppercase tracking-widest text-coral/80">
                 Trusted By
               </p>
               <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {clientele.map((c) => (
                   <div
                     key={c}
-                    className="flex items-center gap-2 text-sm text-ivory/75"
+                    className="flex items-center gap-2 text-sm text-navy-900/75"
                   >
-                    <Icon name="Sparkles" className="h-3.5 w-3.5 text-gold" />
+                    <Icon name="Sparkles" className="h-3.5 w-3.5 text-coral" />
                     {c}
                   </div>
                 ))}

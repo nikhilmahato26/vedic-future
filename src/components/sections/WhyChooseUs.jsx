@@ -25,12 +25,12 @@ export default function WhyChooseUs() {
             <motion.div
               key={point}
               variants={fadeUp}
-              className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-500 hover:border-gold/40 hover:bg-white/[0.05]"
+              className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-500 hover:border-coral/40 hover:bg-white/[0.05]"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-gold/[0.08] text-gold transition-transform duration-500 group-hover:scale-110">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-coral/30 bg-coral/[0.08] text-coral transition-transform duration-500 group-hover:scale-110">
                 <Icon name="CheckCircle2" className="h-5 w-5" />
               </span>
-              <p className="font-medium text-ivory/85">{point}</p>
+              <p className="font-medium text-navy-900/85">{point}</p>
             </motion.div>
           ))}
         </motion.div>

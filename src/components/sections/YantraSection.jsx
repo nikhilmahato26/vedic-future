@@ -47,17 +47,17 @@ export default function YantraSection() {
           >
             {yantras.map((y) => (
               <SwiperSlide key={y.title} className="h-auto">
-                <GlassCard gold glow={false} className="group h-full p-8">
+                <GlassCard coral glow={false} className="group h-full p-8">
                   <div className="relative mb-6 flex items-center justify-center">
                     <Mandala className="h-28 w-28 animate-spin-slower opacity-40 drop-glow transition-opacity duration-500 group-hover:opacity-70" />
-                    <span className="absolute flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 bg-cosmic-900 text-gold">
+                    <span className="absolute flex h-12 w-12 items-center justify-center rounded-full border border-coral/40 bg-navy-900 text-coral">
                       <Icon name={y.icon} className="h-6 w-6" />
                     </span>
                   </div>
-                  <h3 className="text-center font-display text-xl font-semibold text-ivory">
+                  <h3 className="text-center font-display text-xl font-semibold text-navy-900">
                     {y.title}
                   </h3>
-                  <p className="mt-3 text-center text-sm leading-relaxed text-ivory/60">
+                  <p className="mt-3 text-center text-sm leading-relaxed text-navy-900/60">
                     {y.desc}
                   </p>
                 </GlassCard>
@@ -73,7 +73,7 @@ export default function YantraSection() {
           viewport={viewport}
           className="mt-4 flex flex-col items-center gap-6 text-center"
         >
-          <p className="inline-flex items-center gap-2 rounded-full border border-gold/25 bg-white/[0.03] px-5 py-2 text-sm text-gold/90">
+          <p className="inline-flex items-center gap-2 rounded-full border border-coral/25 bg-white/[0.03] px-5 py-2 text-sm text-coral/90">
             <Icon name="Hand" className="h-4 w-4" />
             {yantraNote}
           </p>
