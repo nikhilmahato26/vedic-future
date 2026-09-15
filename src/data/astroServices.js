@@ -33,6 +33,13 @@ export const astroServices = [
     needsBirth: true,
   },
   {
+    to: '/dhan-yoga',
+    title: 'Dhan Yoga Checker',
+    hindi: 'धन योग',
+    icon: 'Coins',
+    desc: 'Find Dhana, Lakshmi and Vasumati yogas in your chart — every wealth-giving combination, explained.',
+  },
+  {
     to: '/panchang',
     title: 'Daily Panchang',
     hindi: 'दैनिक पंचांग',
@@ -109,5 +116,6 @@ export const astroNavLinks = [
   { label: 'Rashifal', to: '/horoscope' },
   { label: 'Shubh Muhurat', to: '/muhurat' },
   { label: 'Vastu Shastra', to: '/vastu' },
+  { label: 'Dhan Yoga Checker', to: '/dhan-yoga' },
   { label: 'Astro Tools', to: '/astro-tools' },
 ];

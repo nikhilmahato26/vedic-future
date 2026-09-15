@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import useAstro from '../../../hooks/useAstro';
-import { birthParams, formatDate } from '../../../lib/astro';
+import { birthParams, birthToSearch, formatDate } from '../../../lib/astro';
 import { Async, Badge, Bar, ConsultCTA, DataTable, List, Panel, PanelTitle, Prose, Stat } from '../ui';
-import { Flame, ShieldCheck, Gem, Leaf, Crown, Activity, Grid3x3, AlertTriangle } from '../../../utils/icons';
+import { Flame, ShieldCheck, Gem, Leaf, Crown, Activity, Grid3x3, AlertTriangle, Coins, ArrowRight } from '../../../utils/icons';
 
 /* Dosha -------------------------------------------------------------- */
 
@@ -228,7 +229,16 @@ export function YogasTab({ birth }) {
 
   return (
     <Panel>
-      <PanelTitle icon={Crown} title="Yogas in your chart" subtitle="Raja, Dhana, Pancha Mahapurusha and other classical combinations" />
+      <PanelTitle
+        icon={Crown}
+        title="Yogas in your chart"
+        subtitle="Raja, Dhana, Pancha Mahapurusha and other classical combinations"
+        action={
+          <Link to={`/dhan-yoga?${new URLSearchParams(birthToSearch(birth))}`} className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-coral/40 px-3.5 py-1.5 text-xs font-medium text-coral transition hover:bg-coral/10">
+            <Coins className="h-3.5 w-3.5" /> Just wealth yogas <ArrowRight className="h-3 w-3" />
+          </Link>
+        }
+      />
       <Async state={yogas}>
         {(list) => list.length === 0 ? (
           <p className="text-sm text-navy-900/60">No major classical yogas detected.</p>

@@ -15,6 +15,7 @@ const PanchangPage = lazy(() => import('./pages/PanchangPage'));
 const HoroscopePage = lazy(() => import('./pages/HoroscopePage'));
 const MuhurtaPage = lazy(() => import('./pages/MuhurtaPage'));
 const VastuPage = lazy(() => import('./pages/VastuPage'));
+const DhanYogaPage = lazy(() => import('./pages/DhanYogaPage'));
 const ToolsPage = lazy(() => import('./pages/ToolsPage'));
 
 /** Scroll to top on page change, or to the #section when the URL has a hash. */
@@ -54,6 +55,7 @@ export default function App() {
               <Route path="/horoscope" element={<HoroscopePage />} />
               <Route path="/muhurat" element={<MuhurtaPage />} />
               <Route path="/vastu" element={<VastuPage />} />
+              <Route path="/dhan-yoga" element={<DhanYogaPage />} />
               <Route path="/astro-tools" element={<ToolsPage />} />
               <Route path="*" element={<Home />} />
             </Routes>
