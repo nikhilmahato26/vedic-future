@@ -34,13 +34,13 @@ export const awards = [
   },
   {
     title: 'Distinguished State & National Honors',
-    detail: 'Multiple state and national-level felicitations across a 25+ year journey.',
+    detail: 'Multiple state and national-level felicitations across an 11+ year journey.',
   },
 ];
 
 // Why choose us — trust points.
 export const whyChooseUs = [
-  '25+ Years Experience',
+  '11+ Years Experience',
   'Confidential Consultations',
   'Authentic Vedic Methods',
   'Personalized Guidance',
@@ -61,15 +61,15 @@ export const consultationModes = [
 
 // Trust indicators (hero) & quick stats.
 export const trustIndicators = [
-  '25+ Years Experience',
+  '11+ Years Experience',
   'International Clientele',
   'Award Winning Astrologer',
   'Complete Privacy',
 ];
 
 export const stats = [
-  { value: 25, suffix: '+', label: 'Years of Experience' },
+  { value: 11, suffix: '+', label: 'Years of Experience' },
   { value: 10000, suffix: '+', label: 'Lives Guided' },
-  { value: 50, suffix: '+', label: 'Countries Served' },
   { value: 13, suffix: '', label: 'Specialised Services' },
 ];
+

@@ -82,7 +82,7 @@ export default function Hero() {
               className="glass-coral mb-8 inline-flex items-center gap-3 rounded-full px-5 py-2 text-xs font-medium uppercase tracking-[0.2em] text-coral"
             >
               <img src={logoImg} alt="" aria-hidden="true" className="h-8 w-8 object-contain" />
-              25+ Years Experience
+              11+ Years Experience
             </motion.div>
 
             {/* Heading */}
