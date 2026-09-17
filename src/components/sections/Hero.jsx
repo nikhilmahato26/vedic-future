@@ -16,6 +16,7 @@ import {
 import Button from '../ui/Button';
 import SacredBackdrop from '../ui/SacredBackdrop';
 import { site, telLink, whatsappLink, primaryPhoneDigits } from '../../data/site';
+import { useSiteSettings } from '../../context/SiteSettings';
 import { trustIndicators } from '../../data/content';
 const logoImg = "/images/logo.png";
 const heroPlaceholderImg = "/images/hero-placeholder.jpg";
@@ -30,6 +31,7 @@ const item = {
 };
 
 export default function Hero() {
+  const settings = useSiteSettings();
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
@@ -91,8 +93,10 @@ export default function Hero() {
               variants={item}
               className="font-display text-4xl font-semibold leading-[1.08] text-navy-900 sm:text-6xl lg:text-7xl text-balance"
             >
+              {settings.heroHeading || <>
               Unlock Your Destiny Through
               <span className="mt-1 block text-coral-gradient-animate">Vedic Wisdom</span>
+              </>}
             </motion.h1>
 
             {/* Subheading */}
@@ -100,7 +104,7 @@ export default function Hero() {
               variants={item}
               className="mt-7 max-w-2xl text-base leading-relaxed text-navy-900/70 sm:text-lg"
             >
-              Vedic Astrology • Numerology • Vastu • Spiritual Healing • Poojas &amp; Homas
+              {settings.heroSub || 'Vedic Astrology • Numerology • Vastu • Spiritual Healing • Poojas & Homas'}
             </motion.p>
 
             <motion.div
@@ -109,7 +113,7 @@ export default function Hero() {
             >
               <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-navy-900/80">
                 <span className="h-2 w-2 rounded-full bg-coral animate-pulse" />
-                Location: {site.location.full}
+                Location: {settings.address || site.location.full}
               </span>
               <span className="max-w-xl">
                 Consultations available in {site.serviceLanguages.join(' & ')} • Delhi &amp; Online
@@ -125,7 +129,7 @@ export default function Hero() {
                 Book Consultation
               </Button>
               <Button
-                href={telLink(primaryPhoneDigits)}
+                href={settings.phoneNumber ? `tel:${settings.phoneNumber.replace(/[^0-9+]/g, '')}` : telLink(primaryPhoneDigits)}
                 variant="glass"
                 size="lg"
                 icon={Phone}
@@ -134,7 +138,7 @@ export default function Hero() {
                 Call Now
               </Button>
               <Button
-                href={whatsappLink()}
+                href={settings.whatsappNumber ? `https://wa.me/${settings.whatsappNumber.replace(/[^0-9+]/g, '')}` : whatsappLink()}
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="outline"
@@ -180,7 +184,7 @@ export default function Hero() {
                     loop
                     playsInline
                     preload="metadata"
-                    aria-label={`${site.name} introduction video`}
+                    aria-label={`${settings.brandName || site.name} introduction video`}
                     onPlay={() => setIsPlaying(true)}
                     onPause={() => setIsPlaying(false)}
                     onVolumeChange={(event) => setIsMuted(event.currentTarget.muted)}
@@ -213,7 +217,7 @@ export default function Hero() {
                 >
                   <img
                     src={heroPlaceholderImg}
-                    alt={`${site.name} Introduction Video Placeholder`}
+                    alt={`${settings.brandName || site.name} Introduction Video Placeholder`}
                     className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                   />
 
@@ -224,7 +228,7 @@ export default function Hero() {
                   <div className="absolute top-4 inset-x-4 flex items-center justify-between z-10">
                     <span className="glass-coral inline-flex items-center gap-2 rounded-full px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-coral">
                       <span className="h-2 w-2 rounded-full bg-coral animate-ping" />
-                      {site.name}
+                      {settings.brandName || site.name}
                     </span>
                     <span className="rounded-full border border-white/20 bg-navy-950/70 px-3 py-1 text-[10px] font-medium tracking-wider text-white/85 backdrop-blur-md">
                       Video Placeholder
@@ -282,10 +286,10 @@ export default function Hero() {
               <Play className="h-8 w-8 fill-current" />
             </div>
             <h3 className="font-display text-2xl font-semibold text-navy-900">
-              {site.name} Video Placeholder
+              {settings.brandName || site.name} Video Placeholder
             </h3>
             <p className="mt-3 text-sm text-navy-900/70 leading-relaxed">
-              This is the dedicated placeholder spot for the official {site.name} introduction video.
+              This is the dedicated placeholder spot for the official {settings.brandName || site.name} introduction video.
               To connect your live video file or YouTube clip, simply set{' '}
               <code className="rounded bg-navy-900/8 px-1.5 py-0.5 text-coral font-mono text-xs">
                 heroVideoUrl

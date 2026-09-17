@@ -21,6 +21,7 @@ import {
 import Mandala from '../ui/Mandala';
 import Link from 'next/link';
 import { astroNavLinks } from '../../data/astroServices';
+import { useSiteSettings } from '../../context/SiteSettings';
 const logoImg = "/images/logo.png";
 
 const socialIcons = {
@@ -31,6 +32,7 @@ const socialIcons = {
 };
 
 export default function Footer() {
+  const settings = useSiteSettings();
   return (
     <footer className="relative overflow-hidden border-t border-coral/15 bg-navy-950">
       <Mandala className="pointer-events-none absolute -bottom-32 left-1/2 h-[30rem] w-[30rem] -translate-x-1/2 animate-spin-slower opacity-[0.06]" />
@@ -121,7 +123,7 @@ export default function Footer() {
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-coral" />
               <span className="flex flex-col">
                 {site.phones.map((p) => (
-                  <a key={p} href={telLink(primaryPhoneDigits)} className="transition hover:text-coral text-amber-100/60">
+                  <a key={p} href={settings.phoneNumber ? `tel:${settings.phoneNumber.replace(/[^0-9+]/g, '')}` : telLink(primaryPhoneDigits)} className="transition hover:text-coral text-amber-100/60">
                     {p}
                   </a>
                 ))}

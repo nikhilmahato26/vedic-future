@@ -17,6 +17,7 @@ import {
 } from '../../data/site';
 import { services } from '../../data/services';
 import { FaWhatsapp, CheckCircle2 } from '../../utils/icons';
+import { useSiteSettings } from '../../context/SiteSettings';
 
 const modes = [
   'In-Person (Delhi)',
@@ -30,6 +31,7 @@ const fieldBase =
   'w-full rounded-xl border border-navy-900/30 bg-navy-900/[0.07] px-4 py-3 text-navy-900 placeholder:text-navy-900/40 outline-none transition focus:border-coral/60 focus:bg-navy-900/[0.12] focus:ring-1 focus:ring-coral/30';
 
 export default function Contact() {
+  const settings = useSiteSettings();
   const [sent, setSent] = useState(false);
   const {
     register,
@@ -247,7 +249,7 @@ export default function Contact() {
                   </span>
                   <span className="flex flex-col text-navy-900/70">
                     {site.phones.map((p) => (
-                      <a key={p} href={telLink(primaryPhoneDigits)} className="transition hover:text-coral">
+                      <a key={p} href={settings.phoneNumber ? `tel:${settings.phoneNumber.replace(/[^0-9+]/g, '')}` : telLink(primaryPhoneDigits)} className="transition hover:text-coral">
                         {p}
                       </a>
                     ))}
@@ -269,7 +271,7 @@ export default function Contact() {
             </GlassCard>
 
             <a
-              href={whatsappLink()}
+              href={settings.whatsappNumber ? `https://wa.me/${settings.whatsappNumber.replace(/[^0-9+]/g, '')}` : whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-between gap-4 rounded-2xl border border-coral/30 bg-coral/[0.06] p-6 transition-all duration-500 hover:bg-coral/[0.12] hover:shadow-glow"

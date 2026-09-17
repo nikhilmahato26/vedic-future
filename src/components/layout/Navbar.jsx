@@ -8,9 +8,11 @@ import { astroNavLinks } from '../../data/astroServices';
 import { navLinks, site, telLink, whatsappLink, primaryPhoneDigits } from '../../data/site';
 import Button from '../ui/Button';
 import MobileMenu from './MobileMenu';
+import { useSiteSettings } from '../../context/SiteSettings';
 const logoImg = "/images/logo.png";
 
 export default function Navbar() {
+  const settings = useSiteSettings();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [astroOpen, setAstroOpen] = useState(false);
@@ -65,7 +67,20 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-6 lg:flex xl:gap-7">
+    
+      <AnimatePresence>
+        {settings?.announcementActive && settings?.announcement && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="bg-coral-500 text-white text-sm font-medium py-2 px-4 text-center"
+          >
+            {settings.announcement}
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <nav className="hidden items-center gap-6 lg:flex xl:gap-7">
             {navLinks.slice(0, 1).map((link) => (
               <NavItem key={link.href} link={link} />
             ))}
@@ -117,7 +132,7 @@ export default function Navbar() {
           {/* Desktop CTAs */}
           <div className="hidden items-center gap-3 lg:flex">
             <Button
-              href={telLink(primaryPhoneDigits)}
+              href={settings.phoneNumber ? `tel:${settings.phoneNumber.replace(/[^0-9+]/g, '')}` : telLink(primaryPhoneDigits)}
               variant="ghost"
               size="sm"
               icon={Phone}
@@ -126,7 +141,7 @@ export default function Navbar() {
               Call
             </Button>
             <Button
-              href={whatsappLink()}
+              href={settings.whatsappNumber ? `https://wa.me/${settings.whatsappNumber.replace(/[^0-9+]/g, '')}` : whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
               variant="coral"
