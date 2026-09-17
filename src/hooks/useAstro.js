@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { astro } from '../lib/astro';
 import { useAstroLang } from '../context/AstroLang';

@@ -1,3 +1,4 @@
+"use client";
 /**
  * Decorative sacred-geometry mandala. Purely ornamental (aria-hidden).
  * Use as a soft, slowly-rotating background accent.

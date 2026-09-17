@@ -1,11 +1,12 @@
+"use client";
 import { AnimatePresence, motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { astroNavLinks } from '../../data/astroServices';
 import { X, Phone, FaWhatsapp } from '../../utils/icons';
 import { navLinks, site, telLink, whatsappLink, primaryPhoneDigits } from '../../data/site';
 import Button from '../ui/Button';
 import Mandala from '../ui/Mandala';
-import logoImg from '../../assets/images/logo.png';
+const logoImg = "/images/logo.png";
 
 export default function MobileMenu({ open, onClose }) {
   return (
@@ -57,7 +58,7 @@ export default function MobileMenu({ open, onClose }) {
                 {astroNavLinks.slice(1).map((link) => (
                   <Link
                     key={link.to}
-                    to={link.to}
+                    href={link.to}
                     onClick={onClose}
                     className="rounded-lg border border-coral/25 bg-coral/[0.08] px-3 py-2.5 text-sm text-cream-100/90 transition hover:border-coral/50 hover:text-coral"
                   >
@@ -68,7 +69,7 @@ export default function MobileMenu({ open, onClose }) {
               {navLinks.map((link, i) => (
                 <motion.div key={link.href} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 + i * 0.05 }}>
                   <Link
-                    to={link.href}
+                    href={link.href}
                     onClick={onClose}
                     className="block border-b border-white/10 py-3 font-display text-xl text-cream-100/90 transition hover:text-coral"
                   >

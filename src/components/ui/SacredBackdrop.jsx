@@ -1,3 +1,4 @@
+"use client";
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Mandala from './Mandala';
@@ -9,7 +10,12 @@ import Mandala from './Mandala';
  */
 const symbols = ['ॐ', '✶', '☽', '✧', '卐', '☉', '✦'];
 
+import { useEffect, useState } from 'react';
+
 export default function SacredBackdrop({ variant = 'default', stars = 40 }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   const starField = useMemo(
     () =>
       Array.from({ length: stars }).map(() => ({
@@ -59,7 +65,7 @@ export default function SacredBackdrop({ variant = 'default', stars = 40 }) {
       )}
 
       {/* starfield */}
-      {starField.map((s, i) => (
+      {mounted && starField.map((s, i) => (
         <span
           key={i}
           className="absolute rounded-full bg-navy-900/25 animate-twinkle"
@@ -75,7 +81,7 @@ export default function SacredBackdrop({ variant = 'default', stars = 40 }) {
       ))}
 
       {/* floating sacred symbols */}
-      {variant === 'default' &&
+      {mounted && variant === 'default' &&
         floats.map((f, i) => (
           <motion.span
             key={i}

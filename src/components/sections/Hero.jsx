@@ -1,3 +1,4 @@
+"use client";
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -16,8 +17,8 @@ import Button from '../ui/Button';
 import SacredBackdrop from '../ui/SacredBackdrop';
 import { site, telLink, whatsappLink, primaryPhoneDigits } from '../../data/site';
 import { trustIndicators } from '../../data/content';
-import logoImg from '../../assets/images/logo.png';
-import heroPlaceholderImg from '../../assets/images/hero-placeholder.jpg';
+const logoImg = "/images/logo.png";
+const heroPlaceholderImg = "/images/hero-placeholder.jpg";
 
 const container = {
   hidden: {},

@@ -1,3 +1,4 @@
+"use client";
 import { motion } from 'framer-motion';
 import { fadeUp, viewport } from '../../utils/motion';
 

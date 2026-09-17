@@ -1,3 +1,4 @@
+"use client";
 import { motion } from 'framer-motion';
 import SectionTitle from '../ui/SectionTitle';
 import Icon from '../ui/Icon';
@@ -6,7 +7,7 @@ import { fadeUp, viewport, stagger } from '../../utils/motion';
 import { useCountUp } from '../../hooks/useCountUp';
 import { stats } from '../../data/content';
 import { site } from '../../data/site';
-import vedicAstrologyImg from '../../assets/images/vedic-astrology.jpg';
+const vedicAstrologyImg = "/images/vedic-astrology.jpg";
 
 const expertiseTags = [
   'Vedic Astrology',

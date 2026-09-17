@@ -1,9 +1,0 @@
-{
-  "functions": {
-    "api/astro.js": { "maxDuration": 60 }
-  },
-  "rewrites": [
-    { "source": "/api/astro/:path*", "destination": "/api/astro?path=:path*" },
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
-  ]
-}

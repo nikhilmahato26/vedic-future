@@ -1,3 +1,4 @@
+"use client";
 import * as Icons from '../../utils/icons';
 
 /**

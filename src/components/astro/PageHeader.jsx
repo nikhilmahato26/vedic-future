@@ -1,5 +1,6 @@
+"use client";
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import SacredBackdrop from '../ui/SacredBackdrop';
 import { ChevronRight } from '../../utils/icons';
 import { fadeUp } from '../../utils/motion';
@@ -10,9 +11,9 @@ export default function PageHeader({ eyebrow, title, subtitle, children }) {
       <SacredBackdrop variant="minimal" stars={30} />
       <div className="container-luxe relative z-10">
         <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-xs text-navy-900/50">
-          <Link to="/" className="hover:text-coral">Home</Link>
+          <Link href="/" className="hover:text-coral">Home</Link>
           <ChevronRight className="h-3 w-3" />
-          <Link to="/astrology" className="hover:text-coral">Astrology</Link>
+          <Link href="/astrology" className="hover:text-coral">Astrology</Link>
           <ChevronRight className="h-3 w-3" />
           <span className="text-coral/80">{eyebrow}</span>
         </nav>

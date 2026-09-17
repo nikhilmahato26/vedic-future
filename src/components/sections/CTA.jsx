@@ -1,10 +1,11 @@
+"use client";
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
 import Mandala from '../ui/Mandala';
 import { fadeUp, viewport } from '../../utils/motion';
 import { CalendarDays, FaWhatsapp, Phone } from '../../utils/icons';
 import { whatsappLink, telLink, primaryPhoneDigits } from '../../data/site';
-import logoImg from '../../assets/images/logo.png';
+const logoImg = "/images/logo.png";
 
 export default function CTA() {
   return (

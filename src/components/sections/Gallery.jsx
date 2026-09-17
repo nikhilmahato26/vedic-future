@@ -1,3 +1,4 @@
+"use client";
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX } from '../../utils/icons';

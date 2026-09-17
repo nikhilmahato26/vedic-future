@@ -1,4 +1,6 @@
-import { useNavigate } from 'react-router-dom';
+"use client";
+import { useRouter } from 'next/navigation';
+// useNavigate -> useRouter
 import { motion } from 'framer-motion';
 import GlassCard from '../ui/GlassCard';
 import SectionTitle from '../ui/SectionTitle';
@@ -24,7 +26,8 @@ const INCLUDES = [
  * Calculations come from the VedIntel AstroAPI (Swiss Ephemeris) via our proxy.
  */
 export default function KundaliGenerator({ isEmbedded = false }) {
-  const navigate = useNavigate();
+  const router = useRouter();
+const navigate = router.push;
 
   const open = (birth) => {
     navigate(`/kundali?${new URLSearchParams({ ...birthToSearch(birth), tab: 'overview' })}`);

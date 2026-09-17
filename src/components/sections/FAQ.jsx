@@ -1,3 +1,4 @@
+"use client";
 import { motion } from 'framer-motion';
 import SectionTitle from '../ui/SectionTitle';
 import FAQAccordion from '../ui/FAQAccordion';

@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useId, useRef, useState } from 'react';
 import { MapPin, Loader2, Search } from '../../utils/icons';
 import { searchPlaces } from '../../lib/astro';

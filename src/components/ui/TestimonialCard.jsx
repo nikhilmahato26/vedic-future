@@ -1,3 +1,4 @@
+"use client";
 import GlassCard from './GlassCard';
 import Icon from './Icon';
 

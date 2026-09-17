@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Loader2, AlertTriangle, Lock, Wand2, FaWhatsapp, Languages } from '../../utils/icons';

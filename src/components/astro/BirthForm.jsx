@@ -1,3 +1,4 @@
+"use client";
 import { useId, useState } from 'react';
 import { Sparkles, Loader2 } from '../../utils/icons';
 import { Field, PlaceSearch, inputCls, selectCls } from './fields';

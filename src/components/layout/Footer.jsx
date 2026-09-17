@@ -1,3 +1,4 @@
+"use client";
 import {
   Phone,
   Mail,
@@ -18,9 +19,9 @@ import {
   socials,
 } from '../../data/site';
 import Mandala from '../ui/Mandala';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { astroNavLinks } from '../../data/astroServices';
-import logoImg from '../../assets/images/logo.png';
+const logoImg = "/images/logo.png";
 
 const socialIcons = {
   WhatsApp: FaWhatsapp,
@@ -81,7 +82,7 @@ export default function Footer() {
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
-                  to={link.href}
+                  href={link.href}
                   className="text-sm text-amber-100/60 transition hover:text-coral"
                 >
                   {link.label}
@@ -95,7 +96,7 @@ export default function Footer() {
           <ul className="mt-5 space-y-3">
             {astroNavLinks.slice(1).map((link) => (
               <li key={link.to}>
-                <Link to={link.to} className="text-sm text-amber-100/60 transition hover:text-coral">
+                <Link href={link.to} className="text-sm text-amber-100/60 transition hover:text-coral">
                   {link.label}
                 </Link>
               </li>

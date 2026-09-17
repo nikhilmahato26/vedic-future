@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
@@ -38,12 +39,19 @@ export default function Contact() {
 
   const onSubmit = (data) => {
     const message =
-      `Namaste 🙏 I would like to book a consultation.\n\n` +
-      `Name: ${data.name}\n` +
-      `Phone: ${data.phone}\n` +
-      `Date of Birth: ${data.dob || '—'}\n` +
-      `Service Required: ${data.service}\n` +
-      `Preferred Mode: ${data.mode}\n` +
+      `Namaste 🙏 I would like to book a consultation.
+
+` +
+      `Name: ${data.name}
+` +
+      `Phone: ${data.phone}
+` +
+      `Date of Birth: ${data.dob || '—'}
+` +
+      `Service Required: ${data.service}
+` +
+      `Preferred Mode: ${data.mode}
+` +
       `Message: ${data.message || '—'}`;
     window.open(whatsappLink(message), '_blank', 'noopener,noreferrer');
     setSent(true);

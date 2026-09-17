@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+"use client";
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import SectionTitle from '../ui/SectionTitle';
 import SacredBackdrop from '../ui/SacredBackdrop';
@@ -25,7 +26,7 @@ function TodayStrip() {
   ];
 
   return (
-    <Link to="/panchang" className="glass group mt-12 block rounded-2xl p-5 transition hover:border-coral/40 hover:shadow-glow">
+    <Link href="/panchang" className="glass group mt-12 block rounded-2xl p-5 transition hover:border-coral/40 hover:shadow-glow">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
         <p className="font-display text-lg text-navy-900">
           <span className="text-coral">Aaj ka Panchang</span> · {formatDate(todayIso())} · {p?.vara || ''} · New Delhi
@@ -65,7 +66,7 @@ export default function AstroServices({ showToday = true, limit }) {
         <motion.div variants={stagger(0.06)} initial="hidden" whileInView="show" viewport={viewport} className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {list.map((s) => (
             <motion.div key={s.title} variants={fadeUp}>
-              <Link to={s.to} className="glass group relative flex h-full flex-col rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:border-coral/45 hover:shadow-glow">
+              <Link href={s.to} className="glass group relative flex h-full flex-col rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:border-coral/45 hover:shadow-glow">
                 <div className="flex items-start justify-between gap-3">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full border border-coral/30 bg-coral/10 text-coral">
                     <Icon name={s.icon} className="h-5 w-5" />
@@ -85,7 +86,7 @@ export default function AstroServices({ showToday = true, limit }) {
 
         {limit && (
           <div className="mt-10 text-center">
-            <Link to="/astrology" className="inline-flex items-center gap-2 rounded-full border border-coral/50 px-7 py-3 text-sm font-medium text-coral transition hover:bg-coral/10">
+            <Link href="/astrology" className="inline-flex items-center gap-2 rounded-full border border-coral/50 px-7 py-3 text-sm font-medium text-coral transition hover:bg-coral/10">
               View all {astroServices.length} astrology services <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

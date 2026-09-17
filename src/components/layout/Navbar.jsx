@@ -1,19 +1,21 @@
+"use client";
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, Phone, FaWhatsapp, ChevronDown, Sparkles } from '../../utils/icons';
 import { astroNavLinks } from '../../data/astroServices';
 import { navLinks, site, telLink, whatsappLink, primaryPhoneDigits } from '../../data/site';
 import Button from '../ui/Button';
 import MobileMenu from './MobileMenu';
-import logoImg from '../../assets/images/logo.png';
+const logoImg = "/images/logo.png";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [astroOpen, setAstroOpen] = useState(false);
   const closeTimer = useRef(null);
-  const { pathname } = useLocation();
+  const pathname = usePathname();
   const onAstroPage = astroNavLinks.some((l) => l.to === pathname);
 
   useEffect(() => setAstroOpen(false), [pathname]);
@@ -47,7 +49,7 @@ export default function Navbar() {
       >
         <div className="container-luxe flex items-center justify-between">
           {/* Brand */}
-          <Link to="/" className="group flex items-center gap-3">
+          <Link href="/" className="group flex items-center gap-3">
             <span className="relative flex h-14 w-14 items-center justify-center rounded-full border border-coral/30 bg-navy-950/70 p-2 transition-all duration-500 group-hover:border-coral/60">
               <img src={logoImg} alt={`${site.name} logo`} className="h-full w-full object-contain" />
               <span className="absolute inset-0 rounded-full animate-spin-slower" />
@@ -92,7 +94,7 @@ export default function Navbar() {
                       {astroNavLinks.map((link, i) => (
                         <Link
                           key={link.to}
-                          to={link.to}
+                          href={link.to}
                           className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm transition ${
                             pathname === link.to ? 'bg-coral/15 text-coral' : 'text-navy-900/80 hover:bg-navy-900/5 hover:text-coral'
                           } ${i === 0 ? 'mb-1 border-b border-coral/15 font-medium' : ''}`}
@@ -155,7 +157,7 @@ export default function Navbar() {
 function NavItem({ link }) {
   return (
     <Link
-      to={link.href}
+      href={link.href}
       className="group relative text-sm font-medium text-navy-900/75 transition-colors duration-300 hover:text-coral"
     >
       {link.label}
