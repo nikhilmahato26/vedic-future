@@ -67,7 +67,7 @@ export default async function EditServicePage({ params }: { params: Promise<{ sl
               <input 
                 id="priceInr" name="priceInr" type="number" step="1" inputMode="numeric"
                 defaultValue={service.priceInr ?? ''}
-                disabled={!!service.quoteOnly}
+                
                 className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:ring-2 focus:ring-saffron-500 outline-none disabled:opacity-50"
               />
               <p className="text-xs text-ink-500">Must be filled unless Quote Only is checked.</p>
