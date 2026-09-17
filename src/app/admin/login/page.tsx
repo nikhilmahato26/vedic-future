@@ -20,7 +20,7 @@ export default async function LoginPage() {
               name="email" 
               type="email" 
               required 
-              className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:outline-none focus:ring-2 focus:ring-saffron-500"
+              className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:outline-none focus:ring-2 focus:ring-coral-500"
             />
           </div>
           <div>
@@ -30,12 +30,12 @@ export default async function LoginPage() {
               name="password" 
               type="password" 
               required 
-              className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:outline-none focus:ring-2 focus:ring-saffron-500"
+              className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:outline-none focus:ring-2 focus:ring-coral-500"
             />
           </div>
           <button 
             type="submit" 
-            className="w-full bg-saffron-500 hover:bg-saffron-600 text-white font-medium py-3 rounded-[var(--radius-input)] transition-colors min-h-[44px]"
+            className="w-full bg-coral-500 hover:bg-coral-600 text-white font-medium py-3 rounded-[var(--radius-input)] transition-colors min-h-[44px]"
           >
             Sign In
           </button>

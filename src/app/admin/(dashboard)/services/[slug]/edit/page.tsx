@@ -32,7 +32,7 @@ export default async function EditServicePage({ params }: { params: Promise<{ sl
               <label className="block text-sm font-medium text-ink-800" htmlFor="name">Name</label>
               <input 
                 id="name" name="name" type="text" required defaultValue={service.name}
-                className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:ring-2 focus:ring-saffron-500 outline-none"
+                className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:ring-2 focus:ring-coral-500 outline-none"
               />
             </div>
             
@@ -40,7 +40,7 @@ export default async function EditServicePage({ params }: { params: Promise<{ sl
               <label className="block text-sm font-medium text-ink-800" htmlFor="slug">Slug</label>
               <input 
                 id="slug" name="slug" type="text" required defaultValue={service.slug}
-                className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:ring-2 focus:ring-saffron-500 outline-none font-mono text-sm"
+                className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:ring-2 focus:ring-coral-500 outline-none font-mono text-sm"
               />
             </div>
           </div>
@@ -49,7 +49,7 @@ export default async function EditServicePage({ params }: { params: Promise<{ sl
             <label className="block text-sm font-medium text-ink-800" htmlFor="kind">Service Kind</label>
             <select 
               id="kind" name="kind" required defaultValue={service.kind}
-              className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:ring-2 focus:ring-saffron-500 outline-none"
+              className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:ring-2 focus:ring-coral-500 outline-none"
             >
               <option value="kundali">Kundali</option>
               <option value="horoscope">Horoscope</option>
@@ -68,7 +68,7 @@ export default async function EditServicePage({ params }: { params: Promise<{ sl
                 id="priceInr" name="priceInr" type="number" step="1" inputMode="numeric"
                 defaultValue={service.priceInr ?? ''}
                 
-                className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:ring-2 focus:ring-saffron-500 outline-none disabled:opacity-50"
+                className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:ring-2 focus:ring-coral-500 outline-none disabled:opacity-50"
               />
               <p className="text-xs text-ink-500">Must be filled unless Quote Only is checked.</p>
             </div>
@@ -76,7 +76,7 @@ export default async function EditServicePage({ params }: { params: Promise<{ sl
             <div className="flex items-center space-x-3 pt-6">
               <input 
                 id="quoteOnly" name="quoteOnly" type="checkbox" defaultChecked={!!service.quoteOnly}
-                className="w-5 h-5 rounded text-saffron-500 focus:ring-saffron-500 border-cream-300"
+                className="w-5 h-5 rounded text-coral-500 focus:ring-coral-500 border-cream-300"
               />
               <label htmlFor="quoteOnly" className="text-sm font-medium text-ink-800 cursor-pointer">
                 Quote Only (Hide Price)
@@ -88,7 +88,7 @@ export default async function EditServicePage({ params }: { params: Promise<{ sl
             <label className="block text-sm font-medium text-ink-800" htmlFor="summary">Summary (One line)</label>
             <input 
               id="summary" name="summary" type="text" defaultValue={service.summary || ''}
-              className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:ring-2 focus:ring-saffron-500 outline-none"
+              className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:ring-2 focus:ring-coral-500 outline-none"
             />
           </div>
 
@@ -96,7 +96,7 @@ export default async function EditServicePage({ params }: { params: Promise<{ sl
             <label className="block text-sm font-medium text-ink-800" htmlFor="description">Full Description</label>
             <textarea 
               id="description" name="description" rows={4} defaultValue={service.description || ''}
-              className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:ring-2 focus:ring-saffron-500 outline-none resize-y"
+              className="w-full px-4 py-3 rounded-[var(--radius-input)] border border-cream-200 bg-cream-50 focus:ring-2 focus:ring-coral-500 outline-none resize-y"
             ></textarea>
           </div>
 
@@ -104,7 +104,7 @@ export default async function EditServicePage({ params }: { params: Promise<{ sl
             <div className="flex items-center space-x-3">
               <input 
                 id="isPublished" name="isPublished" type="checkbox" defaultChecked={!!service.isPublished}
-                className="w-5 h-5 rounded text-saffron-500 focus:ring-saffron-500 border-cream-300"
+                className="w-5 h-5 rounded text-coral-500 focus:ring-coral-500 border-cream-300"
               />
               <label htmlFor="isPublished" className="text-sm font-medium text-ink-900 cursor-pointer">
                 Publish on Site
@@ -113,7 +113,7 @@ export default async function EditServicePage({ params }: { params: Promise<{ sl
 
             <button 
               type="submit" 
-              className="bg-saffron-500 hover:bg-saffron-600 text-white font-medium px-6 py-3 rounded-[var(--radius-input)] transition-colors min-h-[44px]"
+              className="bg-coral-500 hover:bg-coral-600 text-white font-medium px-6 py-3 rounded-[var(--radius-input)] transition-colors min-h-[44px]"
             >
               Save Changes
             </button>

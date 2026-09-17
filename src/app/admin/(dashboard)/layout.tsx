@@ -18,14 +18,14 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       <aside className="hidden md:flex flex-col w-64 bg-white border-r border-cream-200 min-h-screen p-6 sticky top-0">
         <h2 className="text-xl font-bold mb-8">Vedic Future</h2>
         <nav className="flex-1 space-y-2">
-          <Link href="/admin/services" className="block px-4 py-2 rounded-md bg-cream-100 text-saffron-600 font-medium">Services (Pricing)</Link>
+          <Link href="/admin/services" className="block px-4 py-2 rounded-md bg-cream-100 text-coral-600 font-medium">Services (Pricing)</Link>
           <Link href="/admin/bookings" className="block px-4 py-2 rounded-md hover:bg-cream-100 font-medium">Inbox & Orders</Link>
-          <div className="px-4 py-2 text-ink-500 text-sm opacity-50 cursor-not-allowed">Settings (Coming soon)</div>
+          <Link href="/admin/settings" className="block px-4 py-2 rounded-md hover:bg-cream-100 font-medium">Settings</Link>
         </nav>
         <div className="pt-4 border-t border-cream-200">
           <div className="text-sm text-ink-500 truncate mb-2">{session.email}</div>
           <form action={logout}>
-            <button className="text-sm font-medium hover:text-saffron-600 transition-colors">Logout</button>
+            <button className="text-sm font-medium hover:text-coral-600 transition-colors">Logout</button>
           </form>
         </div>
       </aside>

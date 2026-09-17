@@ -51,7 +51,7 @@ export default async function ServicesAdminPage() {
                   <td className="p-4 text-right">
                     <Link 
                       href={`/admin/services/${svc.slug}/edit`}
-                      className="text-saffron-600 hover:text-saffron-500 font-medium bg-saffron-50/50 px-3 py-2 rounded-md min-h-[36px] inline-flex items-center justify-center"
+                      className="text-coral-600 hover:text-coral-500 font-medium bg-coral-50/50 px-3 py-2 rounded-md min-h-[36px] inline-flex items-center justify-center"
                     >
                       Edit
                     </Link>

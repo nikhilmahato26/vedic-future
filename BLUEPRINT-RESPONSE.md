@@ -1,9 +1,13 @@
-Ah, I apologize! That was a UX bug on my part.
+I've successfully built the **Site Settings** page!
 
-Because the Edit Service Page was built as a server component, the "Price (INR)" field had a hardcoded `disabled={true}` if the service was originally saved as "Quote Only". This meant you literally couldn't type in a new price without first saving it as un-quoted, and then reopening it.
+You can now click on **"Settings"** in your Admin Sidebar (or go directly to `http://localhost:3000/admin/settings`).
 
-### How I fixed it:
-I have removed the `disabled` lock entirely from the price input field.
-Now, you can just freely type whatever price you want in the box, uncheck "Quote Only", and hit **Save Changes** all in one go!
+### What you can control from the Settings page:
+- **General Info:** Brand Name, Tagline, Public Email, and your Address.
+- **Contact Numbers:** Easily change your WhatsApp number and fallback Phone Number, which automatically updates all the call-to-actions across the site.
+- **Homepage Hero:** You can alter the massive main Headline and Subheading texts that users see the moment they land on your homepage.
+- **Announcement Banner:** Want to run a sale? You can write an Announcement text (e.g. *"20% off all consultations this week!"*) and simply check "Banner Active" to switch it on or off site-wide.
 
-Try editing the price in the Admin Dashboard now — it should be completely unlocked!
+The form submits instantly, saves securely to your Neon database, and automatically flushes the cache so your changes appear on the live site instantly without a rebuild. 
+
+Everything is fully hooked up!

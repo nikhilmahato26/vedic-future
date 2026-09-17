@@ -37,7 +37,7 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
   return (
     <dialog 
       ref={dialogRef}
-      className="backdrop:bg-navy-950/80 backdrop:backdrop-blur-sm rounded-[var(--radius-card)] p-0 w-full max-w-md mx-auto shadow-2xl border border-cream-200 bg-cream-50 open:animate-in open:fade-in-0 open:zoom-in-95"
+      className="backdrop:bg-navy-950/80 backdrop:backdrop-blur-sm rounded-[var(--radius-card)] p-0 w-full max-w-md fixed inset-0 m-auto shadow-2xl border border-cream-200 bg-cream-50 open:animate-in open:fade-in-0 open:zoom-in-95"
       onClick={(e) => {
         // Close if clicking on the backdrop
         if (e.target === dialogRef.current) onClose();
