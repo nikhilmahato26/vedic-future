@@ -61,7 +61,7 @@ export default function ToolsPage() {
         {tab === 'moolank' && <Moolank />}
 
         <Link
-          to="/vastu"
+          href="/vastu"
           className="glass mt-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl p-5 transition hover:border-coral/40 hover:shadow-glow"
         >
           <span className="flex items-center gap-3">

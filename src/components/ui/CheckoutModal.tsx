@@ -1,10 +1,26 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from './Modal';
-import { createOrder, verifyMockPayment } from '@/app/actions/checkout';
+import { createOrder, verifyPayment } from '@/app/actions/checkout';
 import Button from './Button';
 import { CheckCircle2, Loader2 } from 'lucide-react';
+
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
+
+const loadScript = (src: string) => {
+  return new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+};
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -48,14 +64,58 @@ export default function CheckoutModal({ isOpen, onClose, service, onSuccess, isU
         return;
       }
 
-      // -- MOCK RAZORPAY CHECKOUT FLOW --
-      // Since we don't have real keys, we simulate the user "paying"
-      setTimeout(async () => {
-        const mockPaymentId = `pay_${Math.random().toString(36).substring(2, 10)}`;
-        await verifyMockPayment(result.orderId as number, mockPaymentId);
-        setSuccessState({ refCode: result.refCode as string, quoteOnly: false });
+      // -- REAL RAZORPAY CHECKOUT FLOW --
+      const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
+      if (!res) {
+        setError('Razorpay SDK failed to load. Are you online?');
         setLoading(false);
-      }, 1500); // Simulate Razorpay overlay delay
+        return;
+      }
+
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, 
+        amount: Math.round((result.amount || 0) * 100), // convert to paise
+        currency: 'INR',
+        name: 'Vedic Future',
+        description: `Payment for ${service.name}`,
+        order_id: result.razorpayOrderId,
+        handler: async function (response: any) {
+          try {
+            const verifyRes = await verifyPayment(
+              result.orderId as number,
+              response.razorpay_payment_id,
+              response.razorpay_order_id,
+              response.razorpay_signature
+            );
+
+            if (verifyRes.ok) {
+              setSuccessState({ refCode: result.refCode as string, quoteOnly: false });
+            } else {
+              setError(verifyRes.error || 'Payment verification failed');
+            }
+          } catch (err) {
+            setError('Payment verification error');
+          }
+        },
+        prefill: {
+          name: formData.get('name')?.toString() || '',
+          contact: formData.get('phone')?.toString() || '',
+        },
+        theme: {
+          color: '#E06A4F', // coral
+        },
+        modal: {
+          ondismiss: function() {
+            setLoading(false);
+          }
+        }
+      };
+
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+      
+      // Don't set loading to false here, let the handler/ondismiss manage it
+      // setLoading(false);
 
     } catch (err) {
       setError('An unexpected error occurred.');
@@ -156,7 +216,7 @@ export default function CheckoutModal({ isOpen, onClose, service, onSuccess, isU
             </Button>
             {!service.quoteOnly && (
               <p className="text-center text-[10px] text-navy-900/40 mt-3 uppercase tracking-wider">
-                Secured by Razorpay (Simulated)
+                Secured by Razorpay
               </p>
             )}
           </div>

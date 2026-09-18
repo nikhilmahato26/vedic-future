@@ -205,7 +205,7 @@ function DhanYogaResult({ birth, onReset }) {
           </div>
         </div>
         <Link
-          to={`/kundali?${new URLSearchParams({ ...birthToSearch(birth), tab: 'pdf' })}`}
+          href={`/kundali?${new URLSearchParams({ ...birthToSearch(birth), tab: 'pdf' })}`}
           className="inline-flex shrink-0 items-center gap-2 rounded-full bg-coral-gradient px-6 py-3 text-sm font-medium text-navy-950 shadow-glow transition hover:brightness-110"
         >
           <Sparkles className="h-4 w-4" /> Get the PDF report

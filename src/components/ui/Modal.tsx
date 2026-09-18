@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { X } from 'lucide-react';
 
 interface ModalProps {
@@ -11,39 +11,30 @@ interface ModalProps {
 }
 
 export default function Modal({ isOpen, onClose, title, children }: ModalProps) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
+  // Prevent scrolling on body when modal is open
   useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    if (isOpen && !dialog.open) {
-      dialog.showModal();
-    } else if (!isOpen && dialog.open) {
-      dialog.close();
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
     }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [isOpen]);
 
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    const handleClose = () => {
-      onClose();
-    };
-    
-    dialog?.addEventListener('close', handleClose);
-    return () => dialog?.removeEventListener('close', handleClose);
-  }, [onClose]);
+  if (!isOpen) return null;
 
   return (
-    <dialog 
-      ref={dialogRef}
-      className="backdrop:bg-navy-950/80 backdrop:backdrop-blur-sm rounded-[var(--radius-card)] p-0 w-full max-w-md fixed inset-0 m-auto shadow-2xl border border-cream-200 bg-cream-50 open:animate-in open:fade-in-0 open:zoom-in-95"
-      onClick={(e) => {
-        // Close if clicking on the backdrop
-        if (e.target === dialogRef.current) onClose();
-      }}
-    >
-      <div className="flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* Backdrop */}
+      <div 
+        className="fixed inset-0 bg-navy-950/80 backdrop-blur-sm animate-in fade-in-0"
+        onClick={onClose}
+      />
+      
+      {/* Modal Content */}
+      <div className="relative z-50 w-full max-w-md bg-cream-50 rounded-[var(--radius-card)] shadow-2xl border border-cream-200 animate-in fade-in-0 zoom-in-95 flex flex-col max-h-[90vh]">
         <div className="flex items-center justify-between p-5 border-b border-cream-200">
           <h2 className="font-display text-xl font-bold text-navy-900">{title}</h2>
           <button 
@@ -58,6 +49,6 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
           {children}
         </div>
       </div>
-    </dialog>
+    </div>
   );
 }

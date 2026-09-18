@@ -5,6 +5,14 @@ import { db } from '@/db';
 import { services, enquiries } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { headers } from 'next/headers';
+import Razorpay from 'razorpay';
+import crypto from 'crypto';
+
+// Initialize Razorpay instance
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID!,
+  key_secret: process.env.RAZORPAY_KEY_SECRET!,
+});
 
 // Helper to generate a short 6-character random alphanumeric ref code
 function generateRefCode() {
@@ -16,9 +24,9 @@ export async function createOrder(formData: FormData) {
     serviceId: formData.get('serviceId'),
     name: formData.get('name'),
     phone: formData.get('phone'),
-    email: formData.get('email'),
+    email: formData.get('email') || undefined,
     consultationDate: formData.get('consultationDate'),
-    message: formData.get('message'),
+    message: formData.get('message') || undefined,
   };
 
   const result = checkoutSchema.safeParse(rawData);
@@ -62,25 +70,52 @@ export async function createOrder(formData: FormData) {
     ipHash: ip, // Usually we hash this, keeping it simple here
   }).returning();
 
-  // MOCK RAZORPAY INTEGRATION
-  // In a real scenario, you'd call Razorpay SDK here to create an order
-  // e.g. razorpay.orders.create({ amount: service.priceInr * 100, currency: 'INR' })
-  const mockRazorpayOrderId = `order_${Math.random().toString(36).substring(2, 12)}`;
-
-  await db.update(enquiries).set({ razorpayOrderId: mockRazorpayOrderId }).where(eq(enquiries.id, order.id));
+  // REAL RAZORPAY INTEGRATION
+  let rzpOrderId = null;
+  if (!service.quoteOnly) {
+    try {
+      const options = {
+        amount: Math.round((service.priceInr ?? 0) * 100), // amount in smallest currency unit (paise)
+        currency: "INR",
+        receipt: `receipt_${order.id}`,
+      };
+      const razorpayOrder = await razorpay.orders.create(options);
+      rzpOrderId = razorpayOrder.id;
+      await db.update(enquiries).set({ razorpayOrderId: rzpOrderId }).where(eq(enquiries.id, order.id));
+    } catch (err) {
+      console.error('Razorpay order creation error:', err);
+      return { ok: false, error: 'Failed to create payment order' };
+    }
+  }
 
   return {
     ok: true,
     orderId: order.id,
     refCode,
     amount: service.priceInr,
-    razorpayOrderId: mockRazorpayOrderId,
+    razorpayOrderId: rzpOrderId,
     quoteOnly: service.quoteOnly,
   };
 }
 
-export async function verifyMockPayment(orderId: number, razorpayPaymentId: string) {
-  // In a real app, you would verify the Razorpay signature here using crypto
+export async function verifyPayment(
+  orderId: number,
+  razorpayPaymentId: string,
+  razorpayOrderId: string,
+  razorpaySignature: string
+) {
+  const secret = process.env.RAZORPAY_KEY_SECRET;
+  if (!secret) return { ok: false, error: 'Payment secret not configured' };
+
+  const generatedSignature = crypto
+    .createHmac('sha256', secret)
+    .update(`${razorpayOrderId}|${razorpayPaymentId}`)
+    .digest('hex');
+
+  if (generatedSignature !== razorpaySignature) {
+    return { ok: false, error: 'Invalid payment signature' };
+  }
+
   await db.update(enquiries)
     .set({ 
       paymentStatus: 'paid', 
