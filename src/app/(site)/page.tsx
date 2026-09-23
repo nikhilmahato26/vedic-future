@@ -5,7 +5,6 @@ import AstroServices from '@/components/sections/AstroServices';
 import PoojaSection from '@/components/sections/PoojaSection';
 import YantraSection from '@/components/sections/YantraSection';
 import Expertise from '@/components/sections/Expertise';
-import Awards from '@/components/sections/Awards';
 import WhyChooseUs from '@/components/sections/WhyChooseUs';
 import OnlineConsultation from '@/components/sections/OnlineConsultation';
 import Testimonials from '@/components/sections/Testimonials';
@@ -34,7 +33,6 @@ export default async function HomePage() {
       <PoojaSection />
       <YantraSection />
       <Expertise />
-      <Awards />
       <WhyChooseUs />
       <OnlineConsultation />
       <Testimonials />

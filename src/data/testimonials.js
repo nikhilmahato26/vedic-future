@@ -1,6 +1,13 @@
 export const testimonials = [
   {
     quote:
+      'The prediction Guruji made about my career was incredibly accurate. The special pooja he suggested and performed for us brought immense peace and prosperity to our home.',
+    name: 'Rahul Sharma',
+    role: 'Pooja & Prediction',
+    location: 'Delhi',
+  },
+  {
+    quote:
       'I am incredibly grateful for my session with the Acharya at Vedic Future. Walking into the reading, I felt overwhelmed, but the deep insights and compassionate delivery provided me with an immense sense of clarity and peace.',
     name: 'Dhanya',
     role: 'Personal Consultation',
