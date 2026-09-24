@@ -4,16 +4,19 @@ import Link from 'next/link';
 import SacredBackdrop from '../ui/SacredBackdrop';
 import { ChevronRight } from '../../utils/icons';
 import { fadeUp } from '../../utils/motion';
+import { useAstroBase, useAstroHref } from '../../context/AstroBase';
 
 export default function PageHeader({ eyebrow, title, subtitle, children }) {
+  const base = useAstroBase();
+  const href = useAstroHref();
   return (
-    <section className="relative overflow-hidden pb-10 pt-36 sm:pt-40">
+    <section className={`relative overflow-hidden pb-10 ${base ? 'pt-6' : 'pt-36 sm:pt-40'}`}>
       <SacredBackdrop variant="minimal" stars={30} />
       <div className="container-luxe relative z-10">
         <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-xs text-navy-900/50">
-          <Link href="/" className="hover:text-coral">Home</Link>
+          <Link href={base ? '/admin/services' : '/'} className="hover:text-coral">{base ? 'Admin' : 'Home'}</Link>
           <ChevronRight className="h-3 w-3" />
-          <Link href="/astrology" className="hover:text-coral">Astrology</Link>
+          <Link href={href('/astrology')} className="hover:text-coral">Astrology</Link>
           <ChevronRight className="h-3 w-3" />
           <span className="text-coral/80">{eyebrow}</span>
         </nav>

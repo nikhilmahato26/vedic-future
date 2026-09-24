@@ -19,6 +19,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
         <h2 className="text-xl font-bold mb-8">Vedic Future</h2>
         <nav className="flex-1 space-y-2">
           <Link href="/admin/services" className="block px-4 py-2 rounded-md bg-cream-100 text-coral-600 font-medium">Services (Pricing)</Link>
+          <Link href="/admin/generate" className="block px-4 py-2 rounded-md hover:bg-cream-100 font-medium">Generate Reports</Link>
           <Link href="/admin/bookings" className="block px-4 py-2 rounded-md hover:bg-cream-100 font-medium">Inbox & Orders</Link>
           <Link href="/admin/settings" className="block px-4 py-2 rounded-md hover:bg-cream-100 font-medium">Settings</Link>
         </nav>

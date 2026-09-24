@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useAstroHref } from '../../../context/AstroBase';
 import useAstro from '../../../hooks/useAstro';
 import { birthParams, birthToSearch, formatDate } from '../../../lib/astro';
 import { Async, Badge, Bar, ConsultCTA, DataTable, List, Panel, PanelTitle, Prose, Stat } from '../ui';
@@ -224,6 +225,7 @@ export function RemediesTab({ birth }) {
 /* Yogas -------------------------------------------------------------- */
 
 export function YogasTab({ birth }) {
+  const href = useAstroHref();
   const yogas = useAstro('extended-horoscope/yoga-list', birthParams(birth));
   const tone = (s = '') => (/in-?auspicious|malefic|negative/i.test(s) ? 'bad' : /very/i.test(s) ? 'coral' : 'good');
 
@@ -234,7 +236,7 @@ export function YogasTab({ birth }) {
         title="Yogas in your chart"
         subtitle="Raja, Dhana, Pancha Mahapurusha and other classical combinations"
         action={
-          <Link href={`/dhan-yoga?${new URLSearchParams(birthToSearch(birth))}`} className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-coral/40 px-3.5 py-1.5 text-xs font-medium text-coral transition hover:bg-coral/10">
+          <Link href={href(`/dhan-yoga?${new URLSearchParams(birthToSearch(birth))}`)} className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-coral/40 px-3.5 py-1.5 text-xs font-medium text-coral transition hover:bg-coral/10">
             <Coins className="h-3.5 w-3.5" /> Just wealth yogas <ArrowRight className="h-3 w-3" />
           </Link>
         }

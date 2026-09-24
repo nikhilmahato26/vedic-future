@@ -2,6 +2,7 @@
 import CheckoutModal from '../components/ui/CheckoutModal';
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
+import { useAstroHref } from '../context/AstroBase';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import PageHeader from '../components/astro/PageHeader';
 import BirthForm from '../components/astro/BirthForm';
@@ -95,6 +96,7 @@ export default function DhanYogaPage({ service }) {
 }
 
 function DhanYogaResult({ birth, onReset }) {
+  const href = useAstroHref();
   const params = birthParams(birth);
   const yogas = useAstro('extended-horoscope/yoga-list', params);
   const kundli = useAstro('extended-horoscope/extended-kundli-details', params, { localized: false });
@@ -190,7 +192,7 @@ function DhanYogaResult({ birth, onReset }) {
           <div className="flex flex-wrap gap-2">
             {otherYogas.map((y) => <Badge key={`${y.name}-${y.formed_by}`} tone="muted">{y.name}</Badge>)}
           </div>
-          <Link href={`/kundali?${new URLSearchParams({ ...birthToSearch(birth), tab: 'yogas' })}`} className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-coral hover:underline">
+          <Link href={href(`/kundali?${new URLSearchParams({ ...birthToSearch(birth), tab: 'yogas' })}`)} className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-coral hover:underline">
             See full yoga descriptions in your Kundali <ArrowRight className="h-4 w-4" />
           </Link>
         </Panel>
@@ -205,7 +207,7 @@ function DhanYogaResult({ birth, onReset }) {
           </div>
         </div>
         <Link
-          href={`/kundali?${new URLSearchParams({ ...birthToSearch(birth), tab: 'pdf' })}`}
+          href={href(`/kundali?${new URLSearchParams({ ...birthToSearch(birth), tab: 'pdf' })}`)}
           className="inline-flex shrink-0 items-center gap-2 rounded-full bg-coral-gradient px-6 py-3 text-sm font-medium text-navy-950 shadow-glow transition hover:brightness-110"
         >
           <Sparkles className="h-4 w-4" /> Get the PDF report

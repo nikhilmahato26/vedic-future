@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useAstroHref } from '../context/AstroBase';
 import PageHeader from '../components/astro/PageHeader';
 import { BirthFields, birthIsComplete, emptyBirth } from '../components/astro/BirthForm';
 import { Field, selectCls } from '../components/astro/fields';
@@ -26,6 +27,7 @@ const ZONES = [
 ];
 
 export default function VastuPage({ service }) {
+  const href = useAstroHref();
   const [mode, setMode] = useState('birth'); // 'birth' | 'nakshatra'
   const [birth, setBirth] = useState(emptyBirth);
   const [nakshatra, setNakshatra] = useState('');
@@ -151,7 +153,7 @@ export default function VastuPage({ service }) {
                   <p className="text-sm text-navy-900/60">Find an auspicious Griha Pravesh (house-warming) date.</p>
                 </div>
               </div>
-              <Link href="/muhurat" className="inline-flex shrink-0 items-center gap-2 rounded-full border border-coral/50 px-5 py-2.5 text-sm font-medium text-coral transition hover:bg-coral/10">
+              <Link href={href('/muhurat')} className="inline-flex shrink-0 items-center gap-2 rounded-full border border-coral/50 px-5 py-2.5 text-sm font-medium text-coral transition hover:bg-coral/10">
                 Find Griha Pravesh Muhurat <ArrowRight className="h-4 w-4" />
               </Link>
             </Panel>

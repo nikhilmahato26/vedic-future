@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { useAstroHref } from '../context/AstroBase';
 import PageHeader from '../components/astro/PageHeader';
 import { Field, PlaceSearch, selectCls } from '../components/astro/fields';
 import { KeyValues } from '../components/astro/kundali/PredictTabs';
@@ -18,6 +19,7 @@ const TABS = [
 ];
 
 export default function ToolsPage() {
+  const href = useAstroHref();
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -61,7 +63,7 @@ export default function ToolsPage() {
         {tab === 'moolank' && <Moolank />}
 
         <Link
-          href="/vastu"
+          href={href('/vastu')}
           className="glass mt-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl p-5 transition hover:border-coral/40 hover:shadow-glow"
         >
           <span className="flex items-center gap-3">
