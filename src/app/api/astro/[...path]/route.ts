@@ -146,7 +146,8 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
       });
     }
 
-    const body = await upstream.text();
+    // Upstream echoes the key back in some payloads (e.g. reports/generate's poll_url).
+    const body = (await upstream.text()).split(apiKey).join('REDACTED');
     if (!contentType.includes('json')) {
       return NextResponse.json({ error: `Astrology service returned ${upstream.status}` }, { 
         status: upstream.status,
